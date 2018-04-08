@@ -1,0 +1,15 @@
+{
+  "extends": "rallycoding",
+  "globals": {
+    "fetch": false
+  },
+  "rules": {
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTernary": true,
+        "allowShortCircuit": true
+      }
+    ]
+  }
+}

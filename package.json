@@ -2,19 +2,27 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest.js --watchAll"
+    "deploy:ios": "node deploy.js && exp build:ios",
+    "deploy:android": "node deploy.js && exp build:android"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@expo/samples": "2.1.1",
     "expo": "26.0.0",
     "react": "16.3.0-alpha.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-26.0.0.tar.gz",
-    "react-navigation": "1.5.10"
+    "react-native-elements": "^0.19.1",
+    "react-navigation": "1.5.10",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2",
+    "redux-persist": "^5.9.1",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
-    "jest-expo": "^26.0.0"
+    "jest-expo": "^26.0.0",
+    "eslint-config-rallycoding": "^3.2.0",
+    "mz": "^2.7.0",
+    "readline-sync": "^1.4.9"
   }
 }

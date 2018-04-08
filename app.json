@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "my-roomies",
-    "description": "A very interesting project.",
-    "slug": "my-roomies",
+    "name": "MyRoomies",
+    "description": "Sharing an apartment with roomates has never been easier!",
+    "slug": "MyRoomies",
     "privacy": "public",
     "sdkVersion": "26.0.0",
     "platforms": ["ios", "android"],
