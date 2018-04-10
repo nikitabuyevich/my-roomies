@@ -7,15 +7,15 @@ import Colors from '../constants/Colors';
 
 import ChatScreen from '../screens/ChatScreen';
 import DebtsScreen from '../screens/DebtsScreen';
-import TasksScreen from '../screens/TasksScreen';
+import HomeScreen from '../screens/HomeScreen';
 
 const MainNavigation = new TabNavigator(
   {
     Chat: {
       screen: ChatScreen
     },
-    Tasks: {
-      screen: TasksScreen
+    Home: {
+      screen: HomeScreen
     },
     Debts: {
       screen: DebtsScreen
@@ -33,7 +33,7 @@ const MainNavigation = new TabNavigator(
                 ? `ios-chatbubbles${focused ? '' : '-outline'}`
                 : 'md-chatboxes';
             break;
-          case 'Tasks':
+          case 'Home':
             iconName =
               Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people';
             break;
@@ -53,10 +53,11 @@ const MainNavigation = new TabNavigator(
         );
       }
     }),
-    initialRouteName: 'Tasks',
+    initialRouteName: 'Home',
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     animationEnabled: true,
+    lazy: false,
     swipeEnabled: true
   }
 );

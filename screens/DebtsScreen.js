@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    fontFamily: 'Roboto',
     color: '#333'
   },
   descriptionContainer: {
@@ -102,6 +103,7 @@ const styles = StyleSheet.create({
     borderRadius: 25
   },
   textDescription: {
+    fontFamily: 'Roboto',
     marginLeft: 10,
     color: '#666'
   }

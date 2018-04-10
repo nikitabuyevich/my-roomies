@@ -1,4 +1,3 @@
-/* eslint jsx-a11y/accessible-emoji: 0 */
 import React from 'react';
 import NavBar, { NavTitle, NavButton } from 'react-native-nav';
 

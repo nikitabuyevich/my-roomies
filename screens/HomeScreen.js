@@ -1,14 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import HomeNavBar from '../components/HomeNavBar';
 
-export default class TasksScreen extends React.Component {
+export default class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Tasks'
+    title: 'Home'
   };
 
   render() {
     return (
       <View style={styles.container}>
+        <HomeNavBar />
         <Text>This the links screen</Text>
       </View>
     );
