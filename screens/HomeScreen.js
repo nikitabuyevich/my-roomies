@@ -11,7 +11,6 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <HomeNavBar />
-        <Text>This the links screen</Text>
       </View>
     );
   }
