@@ -42,7 +42,7 @@ export default class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavBar />
+        <NavBar title="💬 Roomies Chat" />
         <GiftedChat
           messages={this.state.messages}
           onSend={this.onSend}
