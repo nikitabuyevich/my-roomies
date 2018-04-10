@@ -6,22 +6,24 @@
     "privacy": "public",
     "sdkVersion": "26.0.0",
     "platforms": ["ios", "android"],
-    "version": "1.0.0",
+    "version": "0.0.1",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nikitabuyevich.myroomies"
+    },
+    "android": {
+      "package": "com.nikitabuyevich.myroomies"
     }
-  }
+  },
+  "latestBuildDate": "2018-04-09T11:09:29.758Z"
 }
