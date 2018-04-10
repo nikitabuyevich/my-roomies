@@ -26,7 +26,7 @@ const styles = {
     height: 50
   },
   textStyle: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
     textAlign: 'center'
   }

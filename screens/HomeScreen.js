@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import HomeNavBar from '../components/HomeNavBar';
+import UserList from '../components/UserList';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -11,6 +12,7 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <HomeNavBar />
+        <UserList />
       </View>
     );
   }

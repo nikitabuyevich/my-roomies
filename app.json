@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "MyRoomies",
-    "description": "Sharing an apartment with roomates has never been easier!",
+    "description": "Sharing an apartment with roommates has never been easier!",
     "slug": "MyRoomies",
     "privacy": "public",
     "sdkVersion": "26.0.0",
@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "version": "0.0.1",
+    "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
