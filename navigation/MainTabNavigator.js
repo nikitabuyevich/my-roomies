@@ -5,53 +5,64 @@ import { TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
 
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import ChatScreen from '../screens/ChatScreen';
+import DebtsScreen from '../screens/DebtsScreen';
+import TasksScreen from '../screens/TasksScreen';
 
 const MainNavigation = new TabNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Chat: {
+      screen: ChatScreen
     },
-    Links: {
-      screen: LinksScreen,
+    Tasks: {
+      screen: TasksScreen
     },
-    Settings: {
-      screen: SettingsScreen,
-    },
+    Debts: {
+      screen: DebtsScreen
+    }
   },
   {
-    navigationOptions: ({navigation}) => ({
-      tabBarIcon: ({focused}) => {
-        const {routeName} = navigation.state;
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused }) => {
+        const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Home':
-            iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+          case 'Chat':
+            iconName =
+              Platform.OS === 'ios'
+                ? `ios-chatbubbles${focused ? '' : '-outline'}`
+                : 'md-chatboxes';
             break;
-          case 'Links':
-            iconName = Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link';
+          case 'Tasks':
+            iconName =
+              Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people';
             break;
-          case 'Settings':
-            iconName = Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options';
+          case 'Debts':
+            iconName = Platform.OS === 'ios' ? `ios-cash${focused ? '' : '-outline'}` : 'md-cash';
+            break;
+          default:
+            return;
         }
         return (
-          <Ionicons name={ iconName } size={ 28 } style={ { marginBottom: -3, width: 25 } } color={ focused ? Colors.tabIconSelected : Colors.tabIconDefault } />
-          );
-      },
+          <Ionicons
+            name={iconName}
+            size={28}
+            style={{ marginBottom: -3, width: 25 }}
+            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+          />
+        );
+      }
     }),
+    initialRouteName: 'Tasks',
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     animationEnabled: true,
-    swipeEnabled: true,
+    swipeEnabled: true
   }
 );
 
 export default class MainTabNavigator extends Component {
   render() {
-    return <MainNavigation />
+    return <MainNavigation />;
   }
 }

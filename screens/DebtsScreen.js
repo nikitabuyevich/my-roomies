@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export default class LinksScreen extends React.Component {
+export default class DebtsScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'Debts'
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This the links screen</Text>
+        <Text>This is the settings scren</Text>
       </View>
     );
   }
@@ -19,6 +19,6 @@ const styles = {
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
-  },
+    backgroundColor: '#fff'
+  }
 };
