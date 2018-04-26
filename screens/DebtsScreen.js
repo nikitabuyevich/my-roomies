@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { Header } from 'react-native-elements';
 import Timeline from 'react-native-timeline-listview';
 import Modal from 'react-native-modal';
 import DropdownAlert from 'react-native-dropdownalert';
-import NavBar from '../components/NavBar';
 import debts from '../data/debts';
 import DebtsModal from '../components/DebtsModal';
+import AddDebtModal from '../components/AddDebtModal';
 import Colors from '../constants/Colors';
 import checkImg from '../assets/images/check.png';
 import timesImg from '../assets/images/times.png';
@@ -23,6 +24,7 @@ export default class DebtsScreen extends Component {
       data: debts,
       selected: null,
       debtsModalIsVisible: false,
+      addDebtModalIsVisible: false,
       selectedDebtPaid: false
     };
   }
@@ -35,8 +37,44 @@ export default class DebtsScreen extends Component {
     });
   }
 
-  componentDidMount = () => {
-    console.log(this.state.data);
+  getDate = () => {
+    const date = new Date();
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    return `${day} ${monthNames[monthIndex]} ${year}`;
+  };
+
+  alertMessage = (type, title, message) => {
+    this.dropdownAlert.alertWithType(type, title, message);
+  };
+
+  hideDebtsModal = () => {
+    this.setState({
+      debtsModalIsVisible: false
+    });
+  };
+
+  hideAddDebtModal = () => {
+    this.setState({
+      addDebtModalIsVisible: false
+    });
   };
 
   togglePaidStatus = () => {
@@ -68,21 +106,45 @@ export default class DebtsScreen extends Component {
     this.forceUpdate();
   };
 
-  alertMessage = (type, title, message) => {
-    this.dropdownAlert.alertWithType(type, title, message);
-  };
+  addDebt = (title, description) => {
+    const { data } = this.state;
 
-  hideDebtsModal = () => {
-    this.setState({
-      debtsModalIsVisible: false
+    data.push({
+      id: data.length,
+      time: this.getDate(),
+      title,
+      description,
+      lineColor: Colors.redColor,
+      lineWidth: 2,
+      icon: timesImg,
+      paid: false
     });
+
+    const notifyMessage = `The ${title} for ${description} has been added!`;
+    this.alertMessage('success', 'Added Debt', notifyMessage);
+
+    this.forceUpdate();
   };
 
   render() {
     return (
       <View style={styles.container}>
         <DropdownAlert closeInterval={5000} ref={c => (this.dropdownAlert = c)} zIndex={100} />
-        <NavBar title="💵 Debts Timeline" />
+        <Header
+          statusBarProps={{ barStyle: 'light-content' }}
+          centerComponent={{ text: 'Debts Timeline', style: styles.headerTitleStyle }}
+          rightComponent={{
+            icon: 'plus',
+            type: 'feather',
+            color: '#fff',
+            size: 30,
+            component: TouchableOpacity,
+            onPress: () => {
+              this.setState({ addDebtModalIsVisible: true });
+            }
+          }}
+          outerContainerStyles={{ backgroundColor: Colors.orangeColor }}
+        />
         <Modal
           isVisible={this.state.debtsModalIsVisible}
           onSwipe={() =>
@@ -98,6 +160,18 @@ export default class DebtsScreen extends Component {
             paid={this.state.selectedDebtPaid}
             hideDebtsModal={this.hideDebtsModal}
           />
+        </Modal>
+        <Modal
+          isVisible={this.state.addDebtModalIsVisible}
+          onSwipe={() =>
+            this.setState({
+              addDebtModalIsVisible: false
+            })
+          }
+          swipeDirection="up"
+          swipeThreshold={50}
+        >
+          <AddDebtModal addDebt={this.addDebt} hideAddDebtModal={this.hideAddDebtModal} />
         </Modal>
         <View style={styles.timelineContainer}>
           <Timeline
@@ -168,5 +242,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Roboto',
     marginLeft: 10,
     color: '#666'
+  },
+  headerTitleStyle: {
+    color: '#fff',
+    fontSize: 20,
+    fontFamily: 'Roboto'
   }
 });
