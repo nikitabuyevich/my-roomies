@@ -82,7 +82,7 @@ export default class Task extends Component {
             color="#fff"
             size={30}
             containerStyle={{ alignItems: 'flex-end', marginRight: 20 }}
-          />;
+          />
         </View>
       );
     }
@@ -96,7 +96,7 @@ export default class Task extends Component {
           color="#fff"
           size={30}
           containerStyle={{ alignItems: 'flex-end', marginRight: 20 }}
-        />;
+        />
       </View>
     );
   };
@@ -141,7 +141,7 @@ export default class Task extends Component {
           color="#fff"
           size={24}
           containerStyle={{ alignItems: 'flex-start' }}
-        />;
+        />
       </TouchableOpacity>
     ];
   };
