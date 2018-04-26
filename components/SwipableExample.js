@@ -9,23 +9,11 @@ export default class SwipeableExample extends Component {
     toggle: false
   };
 
-  handleScroll = () => {
-    const { currentlyOpenSwipeable } = this.state;
-
-    if (currentlyOpenSwipeable) {
-      currentlyOpenSwipeable.recenter();
-    }
-  };
-
   render() {
     const { leftActionActivated, toggle } = this.state;
 
     return (
-      <ScrollView
-        scrollEnabled={!this.state.isSwiping}
-        onScroll={this.handleScroll}
-        style={styles.container}
-      >
+      <ScrollView scrollEnabled={!this.state.isSwiping} style={styles.container}>
         <Swipeable
           onSwipeStart={() => this.setState({ isSwiping: true })}
           onSwipeRelease={() => this.setState({ isSwiping: false })}

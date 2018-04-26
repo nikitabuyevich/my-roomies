@@ -6,14 +6,10 @@ import UserList from '../components/UserList';
 import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = {
     title: 'Home',
-    swipeEnabled:
-      typeof navigation.state.params === 'undefined' ||
-      typeof navigation.state.params.swipeEnabled === 'undefined'
-        ? false
-        : navigation.state.params.swipeEnabled
-  });
+    swipeEnabled: false
+  };
 
   render() {
     return (
@@ -27,8 +23,7 @@ export default class HomeScreen extends React.Component {
             color: '#fff',
             component: TouchableOpacity,
             onPress: () => {
-              console.log(this.props.navigation.state.params);
-              this.props.navigation.setParams({ swipeEnabled: true });
+              console.log('ayy');
             }
           }}
           outerContainerStyles={{ backgroundColor: Colors.orangeColor }}

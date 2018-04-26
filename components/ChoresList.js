@@ -1,29 +1,37 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ChoreItem from '../components/ChoreItem';
+import Task from '../components/Task';
 
 export default class ChoresList extends Component {
   render() {
-    const { userId, currentUserId } = this.props;
+    const { userId, currentUserId, enableUserListScroll, disableUserListScroll } = this.props;
 
     return (
       <View style={styles.containerStyle}>
         {this.props.data.map(chore => (
-          <ChoreItem key={chore.id} chore={chore} userId={userId} currentUserId={currentUserId} />
+          <Task
+            key={chore.id}
+            chore={chore}
+            userId={userId}
+            currentUserId={currentUserId}
+            enableUserListScroll={enableUserListScroll}
+            disableUserListScroll={disableUserListScroll}
+          />
         ))}
       </View>
     );
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    justifyContent: 'center',
-    marginBottom: 20
+    marginLeft: 20,
+    justifyContent: 'center'
   },
   weekTextStyle: {
     fontFamily: 'Roboto',
     color: '#777'
   }
-};
+});

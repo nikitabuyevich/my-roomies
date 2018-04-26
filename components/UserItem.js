@@ -1,43 +1,52 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import { Card } from 'react-native-elements';
 import ChoresList from '../components/ChoresList';
 
-const UserItem = ({ user }) => {
+const UserItem = ({ user, enableUserListScroll, disableUserListScroll }) => {
   const { id, name, avatar, chores } = user;
   const { containerStyle, avatarStyle, avatarImageStyle, avatarTextStyle } = styles;
 
   return (
-    <View style={containerStyle}>
-      <View style={avatarStyle}>
-        <Image style={avatarImageStyle} source={{ uri: avatar }} />
-        <Text style={avatarTextStyle}>{name}</Text>
+    <Card containerStyle={{ flex: 1 }}>
+      <View style={containerStyle}>
+        <View style={avatarStyle}>
+          <Image style={avatarImageStyle} source={{ uri: avatar }} />
+          <Text style={avatarTextStyle}>{name.first}</Text>
+          <Text style={avatarTextStyle}>{name.last}</Text>
+        </View>
+        <ChoresList
+          enableUserListScroll={enableUserListScroll}
+          disableUserListScroll={disableUserListScroll}
+          data={chores}
+          userId={id}
+          currentUserId={1}
+        />
       </View>
-      <ChoresList data={chores} userId={id} currentUserId={1} />
-    </View>
+    </Card>
   );
 };
 
 const styles = {
   containerStyle: {
     flex: 1,
-    flexDirection: 'row',
-    marginTop: 20
+    flexDirection: 'row'
   },
   avatarStyle: {
-    width: 100,
+    width: 55,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
   },
   avatarTextStyle: {
-    color: '#666',
-    fontFamily: 'Roboto',
+    color: '#333',
+    fontFamily: 'Roboto-Bold',
     fontSize: 16,
     marginTop: 10
   },
   avatarImageStyle: {
-    width: 75,
-    height: 75
+    width: 40,
+    height: 40
   }
 };
 

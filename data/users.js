@@ -1,7 +1,10 @@
 export default [
   {
     id: 1,
-    name: 'Jeff Turner',
+    name: {
+      first: 'Jeff',
+      last: 'Turner'
+    },
     avatar: 'https://i.imgur.com/sUighr1.png',
     chores: [
       {
@@ -23,7 +26,10 @@ export default [
   },
   {
     id: 2,
-    name: 'Dave Benson',
+    name: {
+      first: 'Dave',
+      last: 'Benson'
+    },
     avatar: 'https://i.imgur.com/DWg0fS1.png',
     chores: [
       {
@@ -40,7 +46,10 @@ export default [
   },
   {
     id: 3,
-    name: 'Lucy Walker',
+    name: {
+      first: 'Lucy',
+      last: 'Walker'
+    },
     avatar: 'https://i.imgur.com/kq60ViM.png',
     chores: [
       {
