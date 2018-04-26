@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Linking } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Timeline from 'react-native-timeline-listview';
+import Modal from 'react-native-modal';
+import DropdownAlert from 'react-native-dropdownalert';
 import NavBar from '../components/NavBar';
 import debts from '../data/debts';
+import DebtsModal from '../components/DebtsModal';
 import Colors from '../constants/Colors';
+import checkImg from '../assets/images/check.png';
+import timesImg from '../assets/images/times.png';
 
 export default class DebtsScreen extends Component {
   static navigationOptions = {
@@ -13,35 +18,85 @@ export default class DebtsScreen extends Component {
   constructor() {
     super();
     this.onEventPress = this.onEventPress.bind(this);
-    this.renderSelected = this.renderSelected.bind(this);
 
-    this.data = debts;
     this.state = {
-      selected: null
+      data: debts,
+      selected: null,
+      debtsModalIsVisible: false,
+      selectedDebtPaid: false
     };
   }
 
-  onEventPress(data) {
+  onEventPress(selectedData) {
     this.setState({
-      selected: data
+      selected: selectedData,
+      selectedDebtPaid: selectedData.paid,
+      debtsModalIsVisible: true
     });
   }
 
-  renderSelected() {
-    if (this.state.selected && !this.state.selected.paid) {
-      Linking.openURL('https://www.paypal.com/us/home');
+  componentDidMount = () => {
+    console.log(this.state.data);
+  };
+
+  togglePaidStatus = () => {
+    const { data, selected } = this.state;
+    let selectedDebt = data[selected.id];
+
+    if (selected.paid) {
+      selectedDebt = {
+        ...selectedDebt,
+        lineColor: Colors.redColor,
+        icon: timesImg,
+        paid: false
+      };
+    } else {
+      selectedDebt = {
+        ...selectedDebt,
+        lineColor: Colors.greenColor,
+        icon: checkImg,
+        paid: true
+      };
     }
-  }
+    data[selectedDebt.id] = selectedDebt;
+    this.forceUpdate();
+  };
+
+  alertMessage = (type, title, message) => {
+    this.dropdownAlert.alertWithType(type, title, message);
+  };
+
+  hideDebtsModal = () => {
+    this.setState({
+      debtsModalIsVisible: false
+    });
+  };
 
   render() {
     return (
       <View style={styles.container}>
+        <DropdownAlert closeInterval={5000} ref={c => (this.dropdownAlert = c)} zIndex={100} />
         <NavBar title="💵 Debts Timeline" />
+        <Modal
+          isVisible={this.state.debtsModalIsVisible}
+          onSwipe={() =>
+            this.setState({
+              debtsModalIsVisible: false
+            })
+          }
+          swipeDirection="up"
+          swipeThreshold={50}
+        >
+          <DebtsModal
+            togglePaidStatus={this.togglePaidStatus}
+            paid={this.state.selectedDebtPaid}
+            hideDebtsModal={this.hideDebtsModal}
+          />
+        </Modal>
         <View style={styles.timelineContainer}>
-          {this.renderSelected()}
           <Timeline
             style={styles.list}
-            data={this.data}
+            data={this.state.data}
             circleSize={20}
             circleColor="rgba(0,0,0,0)"
             lineColor="rgb(45,156,219)"
