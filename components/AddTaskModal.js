@@ -20,6 +20,7 @@ export default class AddTaskModal extends Component {
               onSubmitEditing={() => {
                 if (this.state.choreText) {
                   this.props.hideAddTaskModal();
+                  this.props.addChoreToARandomUser(this.state.choreText);
                 }
               }}
               placeholder="Enter a new chore..."

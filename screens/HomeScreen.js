@@ -19,7 +19,7 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <DropdownAlert ref={c => (this.dropdownAlert = c)} zIndex={100} />
+        <DropdownAlert closeInterval={5000} ref={c => (this.dropdownAlert = c)} zIndex={100} />
         <Header
           statusBarProps={{ barStyle: 'light-content' }}
           centerComponent={{ text: 'Home', style: styles.headerTitleStyle }}

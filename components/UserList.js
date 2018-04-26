@@ -1,41 +1,92 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, TouchableOpacity } from 'react-native';
-import { Header, FormLabel, FormInput } from 'react-native-elements';
+import { View, FlatList, TouchableOpacity } from 'react-native';
+import { Header } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import UserItem from '../components/UserItem';
-import users from '../data/users';
+import dummyUsers from '../data/users';
 import Colors from '../constants/Colors';
 import AddTaskModal from '../components/AddTaskModal';
 
 export default class UserList extends Component {
   state = {
     isScrollable: true,
-    addTaskModalIsVisible: false
+    addTaskModalIsVisible: false,
+    users: [],
+    refreshList: false
+  };
+
+  componentDidMount = () => {
+    this.setState({
+      users: dummyUsers
+    });
   };
 
   enableUserListScroll = () => {
-    this.setState({ isScrollable: true });
+    this.setState({
+      isScrollable: true
+    });
   };
 
   disableUserListScroll = () => {
-    this.setState({ isScrollable: false });
+    this.setState({
+      isScrollable: false
+    });
   };
 
   hideAddTaskModal = () => {
-    this.setState({ addTaskModalIsVisible: false });
+    this.setState({
+      addTaskModalIsVisible: false
+    });
+  };
+
+  refreshFlatList = () => {
+    this.setState({
+      refreshList: !this.state.refreshList
+    });
+  };
+
+  addChoreToARandomUser = choreText => {
+    const { users } = this.state;
+    const randomIdxOfUser = Math.floor(Math.random() * users.length);
+    const selectedUser = users[randomIdxOfUser];
+
+    const chore = {
+      id: selectedUser.chores.length + 1,
+      text: choreText,
+      completed: false
+    };
+
+    selectedUser.chores.push(chore);
+    this.setState({
+      users
+    });
+    this.refreshFlatList();
+    this.props.alertMessage(
+      'success',
+      'Added Chore',
+      `We have randomly assigned ${selectedUser.name.first} ${
+        selectedUser.name.last
+      } the ${choreText} chore!`
+    );
   };
 
   render() {
     return (
       <View style={styles.containerStyle}>
-        {/* <FormValidationMessage>Error message</FormValidationMessage> */}
         <Modal
           isVisible={this.state.addTaskModalIsVisible}
-          onSwipe={() => this.setState({ addTaskModalIsVisible: false })}
+          onSwipe={() =>
+            this.setState({
+              addTaskModalIsVisible: false
+            })
+          }
           swipeDirection="up"
           swipeThreshold={50}
         >
-          <AddTaskModal hideAddTaskModal={this.hideAddTaskModal} />
+          <AddTaskModal
+            addChoreToARandomUser={this.addChoreToARandomUser}
+            hideAddTaskModal={this.hideAddTaskModal}
+          />
         </Modal>
         <Header
           centerComponent={{ text: 'Week of APR 9 2018', style: styles.weekTextStyle }}
@@ -55,7 +106,8 @@ export default class UserList extends Component {
         />
         <FlatList
           scrollEnabled={this.state.isScrollable}
-          data={users}
+          data={this.state.users}
+          extraData={this.state.refreshList}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
             <UserItem
