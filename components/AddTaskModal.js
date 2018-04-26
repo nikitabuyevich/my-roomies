@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { FormInput, Icon } from 'react-native-elements';
+import { View, StyleSheet, Text } from 'react-native';
+import { FormInput } from 'react-native-elements';
 
 export default class AddTaskModal extends Component {
   state = {
@@ -14,6 +14,7 @@ export default class AddTaskModal extends Component {
           <View style={styles.formContainerStyle}>
             <FormInput
               autoFocus
+              inputStyle={{ width: '100%' }}
               onChangeText={choreText => this.setState({ choreText })}
               value={this.state.choreText}
               onSubmitEditing={() => {
@@ -23,7 +24,7 @@ export default class AddTaskModal extends Component {
               }}
               placeholder="Enter a new chore..."
             />
-            <Icon name="x-circle" type="feather" color="red" />;
+            <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
           </View>
         </View>
       </View>
@@ -38,6 +39,14 @@ const styles = StyleSheet.create({
   },
   formContainerStyle: {
     backgroundColor: '#fff',
-    flexDirection: 'row'
+    padding: 10
+  },
+  textHelperStyle: {
+    fontFamily: 'Roboto',
+    color: '#999',
+    alignSelf: 'flex-end',
+    fontSize: 14,
+    marginTop: 10,
+    marginRight: 10
   }
 });

@@ -17,7 +17,8 @@ export default class UserPoints extends Component {
 const styles = {
   containerStyle: {
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 20
   },
   imageStyle: {
     marginLeft: 10,

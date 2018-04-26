@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View } from 'react-native';
 
 import rankStandingsImg from '../assets/images/rank_standings.png';
 
@@ -19,7 +19,7 @@ const styles = {
     justifyContent: 'center'
   },
   imageStyle: {
-    marginLeft: 10,
+    marginLeft: 15,
     width: 150
   },
   textStyle: {
