@@ -20,6 +20,7 @@ const styles = {
   },
   imageStyle: {
     marginLeft: 15,
+    marginTop: 15,
     width: 150
   },
   textStyle: {

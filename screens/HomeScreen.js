@@ -20,20 +20,6 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <DropdownAlert closeInterval={5000} ref={c => (this.dropdownAlert = c)} zIndex={100} />
-        <Header
-          statusBarProps={{ barStyle: 'light-content' }}
-          centerComponent={{ text: 'Home', style: styles.headerTitleStyle }}
-          rightComponent={{
-            icon: 'cog',
-            type: 'font-awesome',
-            color: '#fff',
-            component: TouchableOpacity,
-            onPress: () => {
-              console.log('ayy');
-            }
-          }}
-          outerContainerStyles={{ backgroundColor: Colors.orangeColor }}
-        />
         <HomeNavBar />
         <UserList alertMessage={this.alertMessage} />
       </View>

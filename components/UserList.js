@@ -7,6 +7,8 @@ import dummyUsers from '../data/users';
 import Colors from '../constants/Colors';
 import AddTaskModal from '../components/AddTaskModal';
 
+const currentUserId = 1;
+
 export default class UserList extends Component {
   state = {
     isScrollable: true,
@@ -61,13 +63,16 @@ export default class UserList extends Component {
       users
     });
     this.refreshFlatList();
-    this.props.alertMessage(
-      'success',
-      'Added Chore',
-      `We have randomly assigned ${selectedUser.name.first} ${
-        selectedUser.name.last
-      } the ${choreText} chore!`
-    );
+
+    let notifyMessage = `We have randomly assigned ${selectedUser.name.first} ${
+      selectedUser.name.last
+    } the ${choreText} chore!`;
+
+    if (selectedUser.id === currentUserId) {
+      notifyMessage = `You have been randomly assigned the ${choreText} chore!`;
+    }
+
+    this.props.alertMessage('success', 'Added Chore', notifyMessage);
   };
 
   render() {
@@ -89,6 +94,17 @@ export default class UserList extends Component {
           />
         </Modal>
         <Header
+          leftComponent={{
+            icon: 'settings',
+            type: 'feather',
+            color: '#666',
+            size: 28,
+            component: TouchableOpacity,
+            containerStyle: styles.settingsButtonStyle,
+            onPress: () => {
+              console.log('ayy');
+            }
+          }}
           centerComponent={{ text: 'Week of APR 9 2018', style: styles.weekTextStyle }}
           rightComponent={{
             icon: 'plus-circle',
@@ -112,6 +128,7 @@ export default class UserList extends Component {
           renderItem={({ item }) => (
             <UserItem
               key={item.id}
+              currentUserId={currentUserId}
               enableUserListScroll={this.enableUserListScroll}
               disableUserListScroll={this.disableUserListScroll}
               user={item}
@@ -137,6 +154,10 @@ const styles = {
   },
   addTaskButtonStyle: {
     marginRight: 20,
+    alignSelf: 'center'
+  },
+  settingsButtonStyle: {
+    marginLeft: 20,
     alignSelf: 'center'
   },
   userListHeaderContainerStyle: {
