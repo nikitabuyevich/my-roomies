@@ -12,7 +12,7 @@ export default [
     user: {
       _id: 1,
       name: 'Jeff Turner',
-      avatar: 'https://i.imgur.com/sUighr1.png'
+      avatar: 'https://i.imgur.com/t1jJtKu.png'
     },
     sent: true,
     received: true

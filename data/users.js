@@ -5,7 +5,7 @@ export default [
       first: 'Jeff',
       last: 'Turner'
     },
-    avatar: 'https://i.imgur.com/sUighr1.png',
+    avatar: 'https://i.imgur.com/t1jJtKu.png',
     chores: [
       {
         id: 1,
