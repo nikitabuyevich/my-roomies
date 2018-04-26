@@ -64,9 +64,9 @@ export default class UserList extends Component {
     });
     this.refreshFlatList();
 
-    let notifyMessage = `We have randomly assigned ${selectedUser.name.first} ${
+    let notifyMessage = `${selectedUser.name.first} ${
       selectedUser.name.last
-    } the ${choreText} chore!`;
+    } has been randomly assigned the ${choreText} chore!`;
 
     if (selectedUser.id === currentUserId) {
       notifyMessage = `You have been randomly assigned the ${choreText} chore!`;

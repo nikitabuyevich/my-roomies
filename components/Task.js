@@ -39,7 +39,7 @@ export default class Task extends Component {
     this.props.alertMessage(
       'info',
       'Notified',
-      `We have reminded ${name.first} to complete the ${text} chore!`
+      `${name.first} has been reminded to complete the ${text} chore!`
     );
   };
 

@@ -50,6 +50,10 @@ export default class DebtsScreen extends Component {
         icon: timesImg,
         paid: false
       };
+      const notifyMessage = `The ${selectedDebt.title} for ${
+        selectedDebt.description
+      } is no longer paid!`;
+      this.alertMessage('success', 'Unpaid', notifyMessage);
     } else {
       selectedDebt = {
         ...selectedDebt,
@@ -57,6 +61,8 @@ export default class DebtsScreen extends Component {
         icon: checkImg,
         paid: true
       };
+      const notifyMessage = `The ${selectedDebt.title} for ${selectedDebt.description} is paid!`;
+      this.alertMessage('success', 'Paid', notifyMessage);
     }
     data[selectedDebt.id] = selectedDebt;
     this.forceUpdate();
