@@ -3,6 +3,7 @@ import { Header } from 'react-native-elements';
 import UserPoints from '../components/UserPoints';
 import Podium from '../components/Podium';
 import LastWeeksWinner from '../components/LastWeeksWinner';
+import Colors from '../constants/Colors';
 
 export default class HomeNavBar extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class HomeNavBar extends Component {
         leftComponent={<UserPoints />}
         centerComponent={<Podium />}
         outerContainerStyles={styles.outerContainer}
-        backgroundColor="#fff"
+        backgroundColor={Colors.orangeColor}
         rightComponent={<LastWeeksWinner />}
       />
     );

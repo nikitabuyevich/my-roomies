@@ -29,6 +29,7 @@ const styles = {
   textStyle: {
     fontFamily: 'Roboto-Bold',
     fontSize: 16,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#fff'
   }
 };

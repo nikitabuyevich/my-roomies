@@ -29,12 +29,12 @@ const styles = {
     fontFamily: 'Roboto',
     fontSize: 16,
     textAlign: 'center',
-    color: '#666'
+    color: '#fff'
   },
   winnerTextStyle: {
     fontFamily: 'Roboto-Bold',
     fontSize: 16,
     textAlign: 'center',
-    color: '#333'
+    color: '#fff'
   }
 };

@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import { Header } from 'react-native-elements';
+import { View } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 import HomeNavBar from '../components/HomeNavBar';
 import UserList from '../components/UserList';
-import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {

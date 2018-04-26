@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-
+import { Header } from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat';
-
 import hardCodedMessages from '../data/messages';
-import NavBar from '../components/NavBar';
+import Colors from '../constants/Colors';
 
 const styles = StyleSheet.create({
   container: { flex: 1 }
@@ -42,7 +41,18 @@ export default class ChatScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavBar title="💬 Roomies Chat" />
+        <Header
+          statusBarProps={{ barStyle: 'light-content' }}
+          centerComponent={{
+            text: 'Roomies Chat',
+            style: {
+              color: '#fff',
+              fontSize: 20,
+              fontFamily: 'Roboto'
+            }
+          }}
+          outerContainerStyles={{ backgroundColor: Colors.orangeColor }}
+        />
         <GiftedChat
           messages={this.state.messages}
           onSend={this.onSend}
