@@ -12,7 +12,8 @@ export default class Task extends Component {
   };
 
   componentDidMount = () => {
-    console.log(this.props);
+    const { completed } = this.props.chore;
+    this.setState({ toggle: completed });
   };
 
   onSwipeStart = () => {
@@ -29,11 +30,16 @@ export default class Task extends Component {
     this.props.enableUserListScroll();
   };
 
+  onBellPress = (user, text) => {
+    this.remindUser(user.name, text);
+    this.swipeable.recenter();
+  };
+
   remindUser = (name, text) => {
     this.props.alertMessage(
       'info',
       'Notified',
-      `We have reminded ${name.first} to complete his ${text} task!`
+      `We have reminded ${name.first} to complete the ${text} task!`
     );
   };
 
@@ -117,13 +123,8 @@ export default class Task extends Component {
     return { color: '#555' };
   };
 
-  onBellPress = (user, text) => {
-    this.remindUser(user.name, text);
-    this.swipeable.recenter();
-  };
-
-  renderRightButtons = (user, currentUserId, text) => {
-    if (user.id === currentUserId) {
+  renderRightButtons = (user, currentUserId, text, completed) => {
+    if (user.id === currentUserId || completed) {
       return;
     }
 
@@ -149,13 +150,7 @@ export default class Task extends Component {
     const { toggle, isScrollable } = this.state;
     const { chore, user, currentUserId } = this.props;
     const { text, completed } = chore;
-    const {
-      container,
-      rightSwipeItem,
-      listItem,
-      labelTextStyle,
-      taskTextViewContainerStyle
-    } = styles;
+    const { container, listItem, labelTextStyle, taskTextViewContainerStyle } = styles;
 
     return (
       <ScrollView scrollEnabled={isScrollable} style={container}>
@@ -181,7 +176,7 @@ export default class Task extends Component {
               toggle: !toggle
             })
           }
-          rightButtons={this.renderRightButtons(user, currentUserId, text)}
+          rightButtons={this.renderRightButtons(user, currentUserId, text, completed)}
         >
           <View style={[listItem]}>
             <View style={taskTextViewContainerStyle}>

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import ChoreItem from '../components/ChoreItem';
+import { StyleSheet, View } from 'react-native';
 import Task from '../components/Task';
 
 export default class ChoresList extends Component {
