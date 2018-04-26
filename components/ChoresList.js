@@ -5,18 +5,25 @@ import Task from '../components/Task';
 
 export default class ChoresList extends Component {
   render() {
-    const { userId, currentUserId, enableUserListScroll, disableUserListScroll } = this.props;
+    const {
+      user,
+      currentUserId,
+      enableUserListScroll,
+      disableUserListScroll,
+      alertMessage
+    } = this.props;
 
     return (
       <View style={styles.containerStyle}>
-        {this.props.data.map(chore => (
+        {this.props.user.chores.map(chore => (
           <Task
             key={chore.id}
             chore={chore}
-            userId={userId}
+            user={user}
             currentUserId={currentUserId}
             enableUserListScroll={enableUserListScroll}
             disableUserListScroll={disableUserListScroll}
+            alertMessage={alertMessage}
           />
         ))}
       </View>

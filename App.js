@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { AppLoading, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import MainTabNavigator from './navigation/MainTabNavigator';
@@ -12,38 +12,35 @@ export default class App extends React.Component {
     isLoadingComplete: false
   };
 
-  loadResourcesAsync = async () =>
-    Promise.all([
-      Font.loadAsync({
-        ...Ionicons.font,
-        Roboto: RobotoFont,
-        'Roboto-Bold': RobotoBoldFont
-      })
-    ]);
+  loadResourcesAsync = async () => Promise.all([
+    Font.loadAsync({
+      ...Ionicons.font,
+      Roboto: RobotoFont,
+      'Roboto-Bold': RobotoBoldFont
+    })
+  ]);
 
   handleLoadingError = error => {
     console.warn(error);
   };
 
   handleFinishLoading = () => {
-    this.setState({ isLoadingComplete: true });
+    this.setState({
+      isLoadingComplete: true
+    });
   };
 
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
-        <AppLoading
-          startAsync={this.loadResourcesAsync}
-          onError={this.handleLoadingError}
-          onFinish={this.handleFinishLoading}
-        />
-      );
+        <AppLoading startAsync={ this.loadResourcesAsync } onError={ this.handleLoadingError } onFinish={ this.handleFinishLoading } />
+        );
     }
     return (
-      <View style={styles.container}>
+      <View style={ styles.container }>
         <MainTabNavigator />
       </View>
-    );
+      );
   }
 }
 

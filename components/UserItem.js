@@ -3,8 +3,8 @@ import { View, Text, Image } from 'react-native';
 import { Card } from 'react-native-elements';
 import ChoresList from '../components/ChoresList';
 
-const UserItem = ({ user, enableUserListScroll, disableUserListScroll }) => {
-  const { id, name, avatar, chores } = user;
+const UserItem = ({ user, enableUserListScroll, disableUserListScroll, alertMessage }) => {
+  const { name, avatar } = user;
   const { containerStyle, avatarStyle, avatarImageStyle, avatarTextStyle } = styles;
 
   return (
@@ -18,9 +18,9 @@ const UserItem = ({ user, enableUserListScroll, disableUserListScroll }) => {
         <ChoresList
           enableUserListScroll={enableUserListScroll}
           disableUserListScroll={disableUserListScroll}
-          data={chores}
-          userId={id}
+          user={user}
           currentUserId={1}
+          alertMessage={alertMessage}
         />
       </View>
     </Card>

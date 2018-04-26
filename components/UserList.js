@@ -30,6 +30,7 @@ export default class UserList extends Component {
               enableUserListScroll={this.enableUserListScroll}
               disableUserListScroll={this.disableUserListScroll}
               user={item}
+              alertMessage={this.props.alertMessage}
             />
           )}
         />

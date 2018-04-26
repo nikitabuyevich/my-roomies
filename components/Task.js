@@ -11,6 +11,10 @@ export default class Task extends Component {
     toggle: false
   };
 
+  componentDidMount = () => {
+    console.log(this.props);
+  };
+
   onSwipeStart = () => {
     this.setState({
       isScrollable: false
@@ -23,6 +27,14 @@ export default class Task extends Component {
       isScrollable: true
     });
     this.props.enableUserListScroll();
+  };
+
+  remindUser = (name, text) => {
+    this.props.alertMessage(
+      'info',
+      'Notified',
+      `We have reminded ${name.first} to complete his ${text} task!`
+    );
   };
 
   renderTaskIcon = () => {
@@ -47,7 +59,11 @@ export default class Task extends Component {
     return <Icon name="circle" type="feather" color="#999" />;
   };
 
-  renderLeftActionContent = () => {
+  renderLeftActionContent = (userId, currentUserId) => {
+    if (userId !== currentUserId) {
+      return;
+    }
+
     // activated
     if (this.state.toggle) {
       return (
@@ -101,13 +117,40 @@ export default class Task extends Component {
     return { color: '#555' };
   };
 
+  onBellPress = (user, text) => {
+    this.remindUser(user.name, text);
+    this.swipeable.recenter();
+  };
+
+  renderRightButtons = (user, currentUserId, text) => {
+    if (user.id === currentUserId) {
+      return;
+    }
+
+    return [
+      <TouchableOpacity
+        style={[styles.rightSwipeItem]}
+        onPress={() => {
+          this.onBellPress(user, text);
+        }}
+      >
+        <Icon
+          name="bell"
+          type="feather"
+          color="#fff"
+          size={24}
+          containerStyle={{ alignItems: 'flex-start' }}
+        />;
+      </TouchableOpacity>
+    ];
+  };
+
   render() {
-    const { leftActionActivated, toggle, isScrollable } = this.state;
-    const { chore, userId, currentUserId } = this.props;
+    const { toggle, isScrollable } = this.state;
+    const { chore, user, currentUserId } = this.props;
     const { text, completed } = chore;
     const {
       container,
-      leftSwipeItem,
       rightSwipeItem,
       listItem,
       labelTextStyle,
@@ -117,11 +160,12 @@ export default class Task extends Component {
     return (
       <ScrollView scrollEnabled={isScrollable} style={container}>
         <Swipeable
+          onRef={ref => (this.swipeable = ref)}
           onSwipeStart={this.onSwipeStart}
           onSwipeRelease={this.onSwipeRelease}
           leftActionActivationDistance={75}
           rightButtonWidth={60}
-          leftContent={this.renderLeftActionContent()}
+          leftContent={this.renderLeftActionContent(user.id, currentUserId)}
           onLeftActionActivate={() =>
             this.setState({
               leftActionActivated: true
@@ -137,19 +181,7 @@ export default class Task extends Component {
               toggle: !toggle
             })
           }
-          rightButtons={[
-            <TouchableOpacity
-              style={[rightSwipeItem, { backgroundColor: Colors.backgroundGreyColor }]}
-            >
-              <Icon
-                name="bell"
-                type="feather"
-                color="#fff"
-                size={24}
-                containerStyle={{ alignItems: 'flex-start' }}
-              />;
-            </TouchableOpacity>
-          ]}
+          rightButtons={this.renderRightButtons(user, currentUserId, text)}
         >
           <View style={[listItem]}>
             <View style={taskTextViewContainerStyle}>
@@ -193,6 +225,7 @@ const styles = StyleSheet.create({
   rightSwipeItem: {
     flex: 1,
     justifyContent: 'center',
-    paddingLeft: 18
+    paddingLeft: 18,
+    backgroundColor: Colors.backgroundGreyColor
   }
 });
