@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Header } from 'react-native-elements';
-import { GiftedChat } from 'react-native-gifted-chat';
+import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 import hardCodedMessages from '../data/messages';
 import Colors from '../constants/Colors';
 
@@ -60,6 +60,16 @@ export default class ChatScreen extends Component {
             _id: 1
           }}
           parsePatterns={this.parsePatterns}
+          renderBubble={props => (
+            <Bubble
+              {...props}
+              wrapperStyle={{
+                right: {
+                  backgroundColor: Colors.lightBlueColor
+                }
+              }}
+            />
+          )}
         />
       </View>
     );

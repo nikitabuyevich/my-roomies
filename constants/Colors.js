@@ -1,4 +1,4 @@
-const tintColor = '#2f95dc';
+const tintColor = '#36cdff';
 const greenColor = '#32cd32';
 const redColor = '#FF3636';
 const barColor = '#F7F7F7';
