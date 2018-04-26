@@ -3,6 +3,7 @@ import { StyleSheet, View, Linking } from 'react-native';
 import Timeline from 'react-native-timeline-listview';
 import NavBar from '../components/NavBar';
 import debts from '../data/debts';
+import Colors from '../constants/Colors';
 
 export default class DebtsScreen extends Component {
   static navigationOptions = {
@@ -47,7 +48,7 @@ export default class DebtsScreen extends Component {
             timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
             timeStyle={{
               textAlign: 'center',
-              backgroundColor: '#36cdff',
+              backgroundColor: Colors.lightBlueColor,
               color: 'white',
               padding: 5,
               borderRadius: 13
@@ -62,7 +63,7 @@ export default class DebtsScreen extends Component {
               paddingLeft: 10,
               paddingRight: 10,
               borderWidth: 2,
-              borderColor: '#36cdff',
+              borderColor: Colors.lightBlueColor,
               borderRadius: 10
             }}
             columnFormat="two-column"
