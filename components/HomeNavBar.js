@@ -25,7 +25,8 @@ const styles = {
     justifyContent: 'center'
   },
   outerContainer: {
-    height: 130
+    height: 130,
+    borderBottomWidth: 0
   },
   headerStyle: {
     fontSize: 32,

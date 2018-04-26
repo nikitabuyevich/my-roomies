@@ -23,7 +23,7 @@ export default class AddTaskModal extends Component {
                   this.props.addChoreToARandomUser(this.state.choreText);
                 }
               }}
-              placeholder="Enter a new chore..."
+              placeholder="Add a new chore..."
             />
             <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
           </View>

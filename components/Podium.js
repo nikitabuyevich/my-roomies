@@ -19,7 +19,7 @@ const styles = {
     justifyContent: 'center'
   },
   imageStyle: {
-    marginLeft: 15,
+    marginLeft: 6,
     marginTop: 15,
     width: 150
   },

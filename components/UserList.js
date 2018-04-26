@@ -97,7 +97,7 @@ export default class UserList extends Component {
           leftComponent={{
             icon: 'settings',
             type: 'feather',
-            color: '#666',
+            color: '#fff',
             size: 28,
             component: TouchableOpacity,
             containerStyle: styles.settingsButtonStyle,
@@ -109,7 +109,7 @@ export default class UserList extends Component {
           rightComponent={{
             icon: 'plus-circle',
             type: 'feather',
-            color: Colors.lightBlueColor,
+            color: '#fff',
             size: 28,
             component: TouchableOpacity,
             containerStyle: styles.addTaskButtonStyle,
@@ -117,7 +117,7 @@ export default class UserList extends Component {
               this.setState({ addTaskModalIsVisible: true });
             }
           }}
-          backgroundColor="#fff"
+          backgroundColor={Colors.orangeColor}
           outerContainerStyles={styles.userListHeaderContainerStyle}
         />
         <FlatList
@@ -147,10 +147,10 @@ const styles = {
   },
   weekTextStyle: {
     fontFamily: 'Roboto',
-    color: '#777',
+    color: '#fff',
     textAlign: 'center',
     alignSelf: 'center',
-    fontSize: 14
+    fontSize: 16
   },
   addTaskButtonStyle: {
     marginRight: 20,

@@ -8,6 +8,7 @@ export default class UserPoints extends Component {
     return (
       <View style={styles.containerStyle}>
         <Image style={styles.imageStyle} source={jeffAvatar} />
+        <Text style={[styles.textStyle, { marginTop: 4 }]}>Jeff Turner</Text>
         <Text style={styles.textStyle}>⭐️ 500</Text>
       </View>
     );
@@ -18,7 +19,9 @@ const styles = {
   containerStyle: {
     flex: 1,
     justifyContent: 'center',
-    marginLeft: 20
+    alignItems: 'center',
+    marginTop: 20,
+    marginLeft: 5
   },
   imageStyle: {
     marginLeft: 10,
