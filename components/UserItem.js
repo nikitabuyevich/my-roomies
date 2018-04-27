@@ -14,7 +14,7 @@ const UserItem = ({
   const { containerStyle, avatarStyle, avatarImageStyle, avatarTextStyle } = styles;
 
   return (
-    <Card containerStyle={{ flex: 1 }}>
+    <Card containerStyle={{ flex: 1, paddingLeft: 0 }}>
       <View style={containerStyle}>
         <View style={avatarStyle}>
           <Image style={avatarImageStyle} source={{ uri: avatar }} />
@@ -39,7 +39,8 @@ const styles = {
     flexDirection: 'row'
   },
   avatarStyle: {
-    width: 55,
+    width: 70,
+    paddingLeft: 10,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
@@ -47,12 +48,12 @@ const styles = {
   avatarTextStyle: {
     color: '#333',
     fontFamily: 'Roboto-Bold',
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 10
   },
   avatarImageStyle: {
-    width: 40,
-    height: 40
+    width: 60,
+    height: 60
   }
 };
 

@@ -25,8 +25,10 @@ export default class AddTaskModal extends Component {
   onSubmit = () => {
     const { firstNameText, lastNameText, sexProp } = this.state;
 
-    this.props.addUser(firstNameText, lastNameText, sexProp);
-    this.props.hideAddUserModal();
+    if (firstNameText && lastNameText) {
+      this.props.addUser(firstNameText, lastNameText, sexProp);
+      this.props.hideAddUserModal();
+    }
   };
 
   render() {
