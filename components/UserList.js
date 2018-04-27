@@ -57,8 +57,17 @@ export default class UserList extends Component {
 
   addChoreToARandomUser = choreText => {
     const { users } = this.state;
-    const randomIdxOfUser = Math.floor(Math.random() * users.length);
-    const selectedUser = users[randomIdxOfUser];
+    let choresMin = Number.MAX_SAFE_INTEGER;
+    let selectedUser = null;
+    for (let i = 0; i < users.length; i++) {
+      const user = users[i];
+      const choresOfUser = user.chores;
+
+      if (choresOfUser.length < choresMin) {
+        selectedUser = user;
+        choresMin = choresOfUser.length;
+      }
+    }
 
     const chore = {
       id: selectedUser.chores.length,
