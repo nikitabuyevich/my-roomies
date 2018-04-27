@@ -64,6 +64,12 @@ export default class UserList extends Component {
     });
   };
 
+  scrollToBottom = () => {
+    setTimeout(() => {
+      this.flatlist.scrollToEnd({ animated: true });
+    }, 250);
+  };
+
   addChoreToARandomUser = choreText => {
     const { users } = this.state;
     let choresMin = Number.MAX_SAFE_INTEGER;
@@ -135,6 +141,7 @@ export default class UserList extends Component {
 
     const notifyMessage = `${firstName} ${lastName} has been added as a new roommate. Welcome!`;
     this.props.alertMessage('success', 'Added Roommate', notifyMessage);
+    this.scrollToBottom();
   };
 
   render() {
@@ -196,6 +203,7 @@ export default class UserList extends Component {
         />
         <FlatList
           scrollEnabled={this.state.isScrollable}
+          ref={ref => (this.flatlist = ref)}
           data={this.state.users}
           extraData={this.state.refreshList}
           style={{ marginBottom: 15 }}

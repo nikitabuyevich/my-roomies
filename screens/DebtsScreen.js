@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
-import { Header } from 'react-native-elements';
+import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import { Header, Card } from 'react-native-elements';
 import Timeline from 'react-native-timeline-listview';
 import Modal from 'react-native-modal';
 import DropdownAlert from 'react-native-dropdownalert';
@@ -114,6 +114,26 @@ export default class DebtsScreen extends Component {
     this.scrollToBottom();
   };
 
+  renderDetail = rowData => {
+    if (rowData.paid) {
+      return (
+        <Card title={rowData.title} containerStyle={{ flex: 1, margin: 0 }}>
+          <View>
+            <Text>{rowData.description}</Text>
+          </View>
+        </Card>
+      );
+    }
+
+    return (
+      <Card title={rowData.title} containerStyle={{ flex: 1, margin: 0 }}>
+        <View>
+          <Text>{rowData.description}</Text>
+        </View>
+      </Card>
+    );
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -165,38 +185,20 @@ export default class DebtsScreen extends Component {
           <Timeline
             style={styles.list}
             data={this.state.data}
-            circleSize={20}
-            circleColor="rgba(0,0,0,0)"
-            lineColor="rgb(45,156,219)"
-            timeContainerStyle={{ minWidth: 52, marginTop: -5 }}
-            timeStyle={{
-              textAlign: 'center',
-              backgroundColor: Colors.lightBlueColor,
-              color: 'white',
-              padding: 5,
-              borderRadius: 13
-            }}
+            showTime={false}
+            renderDetail={this.renderDetail}
             descriptionStyle={{ color: 'gray' }}
             options={{
               style: { paddingTop: 5 },
-              ref: ref => (this.scrollView = ref),
-              onChangeVisibleRows: (visibleRows, changedRows) => {
-                console.log(changedRows);
-                // this.scrollView.scrollToEnd({ animated: true });
-              }
+              ref: ref => (this.scrollView = ref)
             }}
             innerCircle={'icon'}
+            iconStyle={{
+              width: 22,
+              height: 22
+            }}
             onEventPress={this.onEventPress}
             separator={false}
-            detailContainerStyle={{
-              marginBottom: 20,
-              paddingLeft: 10,
-              paddingRight: 10,
-              borderWidth: 2,
-              borderColor: Colors.lightBlueColor,
-              borderRadius: 10
-            }}
-            columnFormat="two-column"
           />
         </View>
       </View>
