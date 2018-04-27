@@ -40,25 +40,25 @@ export default class DebtsScreen extends Component {
   getDate = () => {
     const date = new Date();
     const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
+      'JAN',
+      'FEB',
+      'MAR',
+      'APR',
       'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'JUN',
+      'JUL',
+      'AUG',
+      'SEPT',
+      'OCT',
+      'NOV',
+      'DEC'
     ];
 
     const day = date.getDate();
     const monthIndex = date.getMonth();
     const year = date.getFullYear();
 
-    return `${day} ${monthNames[monthIndex]} ${year}`;
+    return `${monthNames[monthIndex]} ${day}, ${year}`;
   };
 
   alertMessage = (type, title, message) => {

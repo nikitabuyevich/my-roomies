@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { FormInput, FormLabel } from 'react-native-elements';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { FormInput, FormLabel, Button, Card } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
 export default class AddDebtModal extends Component {
@@ -10,34 +10,70 @@ export default class AddDebtModal extends Component {
     paid: false
   };
 
+  onSubmit = () => {
+    if (this.state.descriptionText && this.state.titleText) {
+      this.props.addDebt(this.state.titleText, this.state.descriptionText);
+      this.props.hideAddDebtModal();
+    }
+  };
+
   render() {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.containerStyle}>
-          <View style={styles.formContainerStyle}>
-            <Text style={styles.addDebtTextStyle}>Add Debt</Text>
-            <FormLabel>Title</FormLabel>
-            <FormInput
-              autoFocus
-              inputStyle={{ width: '100%' }}
-              onChangeText={titleText => this.setState({ titleText })}
-              value={this.state.titleText}
-              placeholder="Enter title..."
-            />
-            <FormLabel>Description</FormLabel>
-            <FormInput
-              inputStyle={{ width: '100%' }}
-              onChangeText={descriptionText => this.setState({ descriptionText })}
-              value={this.state.descriptionText}
-              onSubmitEditing={() => {
-                if (this.state.descriptionText) {
-                  this.props.addDebt(this.state.titleText, this.state.descriptionText);
-                  this.props.hideAddDebtModal();
-                }
-              }}
-              placeholder="Enter description..."
-            />
-            <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+          <View style={{ backgroundColor: '#fff', padding: 10 }}>
+            <Card
+              titleStyle={styles.titleTextStyle}
+              containerStyle={{ padding: 10, margin: 5 }}
+              title="Add a New Debt"
+              style={styles.formContainerStyle}
+            >
+              <FormLabel>Title</FormLabel>
+              <FormInput
+                autoFocus
+                onSubmitEditing={this.onSubmit}
+                inputStyle={{ width: '100%' }}
+                onChangeText={titleText => this.setState({ titleText })}
+                value={this.state.titleText}
+                placeholder="Enter title..."
+              />
+              <FormLabel>Description</FormLabel>
+              <FormInput
+                inputStyle={{ width: '100%' }}
+                onChangeText={descriptionText => this.setState({ descriptionText })}
+                value={this.state.descriptionText}
+                onSubmitEditing={this.onSubmit}
+                placeholder="Enter description..."
+              />
+              <Button
+                backgroundColor="#fff"
+                icon={{
+                  name: 'plus-circle',
+                  type: 'feather',
+                  size: 20,
+                  color: '#fff'
+                }}
+                title="ADD"
+                onPress={this.onSubmit}
+                fontFamily="Roboto"
+                fontSize={20}
+                color="#fff"
+                buttonStyle={{
+                  paddingLeft: 10,
+                  paddingRight: 10,
+                  paddingTop: 6,
+                  paddingBottom: 6,
+                  marginTop: 10,
+                  marginLeft: 5,
+                  borderWidth: 1,
+                  borderColor: Colors.orangeColor,
+                  backgroundColor: Colors.orangeColor,
+                  borderRadius: 6
+                }}
+                component={TouchableOpacity}
+              />
+              <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+            </Card>
           </View>
         </View>
       </View>
@@ -50,7 +86,7 @@ const styles = StyleSheet.create({
     flex: 0.75,
     justifyContent: 'center'
   },
-  addDebtTextStyle: {
+  titleTextStyle: {
     fontSize: 20,
     fontFamily: 'Roboto',
     textAlign: 'center',

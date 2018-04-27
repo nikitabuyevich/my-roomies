@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { FormInput, Card, Button } from 'react-native-elements';
+import { FormInput, FormLabel, Button, Card } from 'react-native-elements';
+import RadioForm from 'react-native-simple-radio-button';
 import Colors from '../constants/Colors';
+
+const sexProps = [
+  {
+    label: 'Male',
+    value: 'M'
+  },
+  {
+    label: 'Female',
+    value: 'F'
+  }
+];
 
 export default class AddTaskModal extends Component {
   state = {
-    choreText: ''
+    firstNameText: '',
+    lastNameText: '',
+    sexProp: 'M'
   };
 
   onSubmit = () => {
-    if (this.state.choreText) {
-      this.props.hideAddTaskModal();
-      this.props.addChoreToARandomUser(this.state.choreText);
-    }
+    const { firstNameText, lastNameText, sexProp } = this.state;
+
+    this.props.addUser(firstNameText, lastNameText, sexProp);
+    this.props.hideAddUserModal();
   };
 
   render() {
@@ -23,16 +37,37 @@ export default class AddTaskModal extends Component {
             <Card
               titleStyle={styles.titleTextStyle}
               containerStyle={{ padding: 10, margin: 5 }}
-              title="Add a New Chore"
+              title="Add a New Roommate"
               style={styles.formContainerStyle}
             >
+              <FormLabel>First Name</FormLabel>
               <FormInput
                 autoFocus
                 inputStyle={{ width: '100%' }}
-                onChangeText={choreText => this.setState({ choreText })}
-                value={this.state.choreText}
-                onSubmitEditing={this.onSubmit}
-                placeholder="Add a new chore..."
+                onChangeText={firstNameText => this.setState({ firstNameText })}
+                value={this.state.firstNameText}
+                placeholder="Enter first name..."
+              />
+              <FormLabel>Last Name</FormLabel>
+              <FormInput
+                inputStyle={{ width: '100%' }}
+                onChangeText={lastNameText => this.setState({ lastNameText })}
+                value={this.state.lastNameText}
+                placeholder="Enter last name..."
+              />
+              <FormLabel>Sex</FormLabel>
+              <RadioForm
+                radio_props={sexProps}
+                initial={0}
+                formHorizontal
+                labelStyle={styles.radioButtonLabelStyle}
+                buttonColor={Colors.orangeColor}
+                selectedButtonColor={Colors.orangeColor}
+                style={{ marginTop: 6, marginLeft: 10 }}
+                labelHorizontal={false}
+                onPress={sexProp => {
+                  this.setState({ sexProp });
+                }}
               />
               <Button
                 backgroundColor="#fff"
@@ -92,5 +127,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 10,
     marginRight: 10
+  },
+  radioButtonLabelStyle: {
+    fontFamily: 'Roboto-Bold',
+    color: '#777'
   }
 });

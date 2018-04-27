@@ -6,13 +6,15 @@ import UserItem from '../components/UserItem';
 import dummyUsers from '../data/users';
 import Colors from '../constants/Colors';
 import AddTaskModal from '../components/AddTaskModal';
+import AddUserModel from '../components/AddUserModal';
 
-const currentUserId = 1;
+const currentUserId = 0;
 
 export default class UserList extends Component {
   state = {
     isScrollable: true,
     addTaskModalIsVisible: false,
+    addUserModalIsVisible: false,
     users: [],
     refreshList: false
   };
@@ -41,6 +43,12 @@ export default class UserList extends Component {
     });
   };
 
+  hideAddUserModal = () => {
+    this.setState({
+      addUserModalIsVisible: false
+    });
+  };
+
   refreshFlatList = () => {
     this.setState({
       refreshList: !this.state.refreshList
@@ -53,7 +61,7 @@ export default class UserList extends Component {
     const selectedUser = users[randomIdxOfUser];
 
     const chore = {
-      id: selectedUser.chores.length + 1,
+      id: selectedUser.chores.length,
       text: choreText,
       completed: false
     };
@@ -75,6 +83,50 @@ export default class UserList extends Component {
     this.props.alertMessage('success', 'Added Chore', notifyMessage);
   };
 
+  randomlyPickAvatar = sex => {
+    const avatars = {
+      males: [
+        'https://i.imgur.com/3FDGnAk.png',
+        'https://i.imgur.com/BaFiCQa.png',
+        'https://i.imgur.com/hLaBSLw.png'
+      ],
+      females: [
+        'https://i.imgur.com/6umrMwe.png',
+        'https://i.imgur.com/lEYRGzf.png',
+        'https://i.imgur.com/liXLTNP.png'
+      ]
+    };
+
+    if (sex === 'M') {
+      const randomNum = Math.floor(Math.random() * avatars.males.length);
+      return avatars.males[randomNum];
+    }
+
+    const randomNum = Math.floor(Math.random() * avatars.females.length);
+    return avatars.females[randomNum];
+  };
+
+  addUser = (firstName, lastName, sex) => {
+    const { users } = this.state;
+
+    const user = {
+      id: users.length,
+      name: {
+        first: firstName,
+        last: lastName
+      },
+      sex,
+      avatar: this.randomlyPickAvatar(sex),
+      chores: []
+    };
+
+    users.push(user);
+    this.refreshFlatList();
+
+    const notifyMessage = `${firstName} ${lastName} has been added as a new roommate. Welcome!`;
+    this.props.alertMessage('success', 'Added Roommate', notifyMessage);
+  };
+
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -93,16 +145,28 @@ export default class UserList extends Component {
             hideAddTaskModal={this.hideAddTaskModal}
           />
         </Modal>
+        <Modal
+          isVisible={this.state.addUserModalIsVisible}
+          onSwipe={() =>
+            this.setState({
+              addUserModalIsVisible: false
+            })
+          }
+          swipeDirection="up"
+          swipeThreshold={50}
+        >
+          <AddUserModel addUser={this.addUser} hideAddUserModal={this.hideAddUserModal} />
+        </Modal>
         <Header
           leftComponent={{
-            icon: 'settings',
+            icon: 'user-plus',
             type: 'feather',
             color: '#fff',
             size: 28,
             component: TouchableOpacity,
             containerStyle: styles.settingsButtonStyle,
             onPress: () => {
-              console.log('ayy');
+              this.setState({ addUserModalIsVisible: true });
             }
           }}
           centerComponent={{ text: 'Week of APR 9 2018', style: styles.weekTextStyle }}
