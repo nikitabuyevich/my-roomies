@@ -30,6 +30,10 @@ export default class DebtsScreen extends Component {
     };
   }
 
+  componentDidMount = () => {
+    this.scrollToBottom();
+  };
+
   onEventPress(selectedData) {
     this.setState({
       selected: selectedData,
@@ -37,6 +41,12 @@ export default class DebtsScreen extends Component {
       debtsModalIsVisible: true
     });
   }
+
+  scrollToBottom = () => {
+    setTimeout(() => {
+      this.scrollView.scrollToEnd({ animated: true });
+    }, 250);
+  };
 
   alertMessage = (type, title, message) => {
     this.dropdownAlert.alertWithType(type, title, message);
@@ -101,6 +111,7 @@ export default class DebtsScreen extends Component {
     this.alertMessage('success', 'Added Debt', notifyMessage);
 
     this.forceUpdate();
+    this.scrollToBottom();
   };
 
   render() {
@@ -166,7 +177,14 @@ export default class DebtsScreen extends Component {
               borderRadius: 13
             }}
             descriptionStyle={{ color: 'gray' }}
-            options={{ style: { paddingTop: 5 } }}
+            options={{
+              style: { paddingTop: 5 },
+              ref: ref => (this.scrollView = ref),
+              onChangeVisibleRows: (visibleRows, changedRows) => {
+                console.log(changedRows);
+                // this.scrollView.scrollToEnd({ animated: true });
+              }
+            }}
             innerCircle={'icon'}
             onEventPress={this.onEventPress}
             separator={false}
