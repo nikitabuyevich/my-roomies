@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Task from '../components/Task';
+import Colors from '../constants/Colors';
 
 export default class ChoresList extends Component {
   render() {
@@ -34,7 +35,9 @@ const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
     marginLeft: 20,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: Colors.greyColor
   },
   weekTextStyle: {
     fontFamily: 'Roboto',

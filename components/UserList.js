@@ -188,7 +188,7 @@ export default class UserList extends Component {
           scrollEnabled={this.state.isScrollable}
           data={this.state.users}
           extraData={this.state.refreshList}
-          style={{ padding: 0, margin: 0 }}
+          style={{ marginBottom: 15 }}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
             <UserItem
