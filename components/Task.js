@@ -81,7 +81,7 @@ export default class Task extends Component {
           <Icon
             name="x"
             type="feather"
-            color="#fff"
+            color="#f3f3f3"
             size={30}
             containerStyle={{ alignItems: 'flex-end', marginRight: 20 }}
           />
@@ -95,7 +95,7 @@ export default class Task extends Component {
         <Icon
           name="check"
           type="feather"
-          color="#fff"
+          color="#f3f3f3"
           size={30}
           containerStyle={{ alignItems: 'flex-end', marginRight: 20 }}
         />
@@ -148,7 +148,7 @@ export default class Task extends Component {
         <Icon
           name="bell"
           type="feather"
-          color="#fff"
+          color="#f3f3f3"
           size={24}
           containerStyle={{ alignItems: 'flex-start' }}
         />

@@ -21,7 +21,7 @@ export default class AddDebtModal extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={styles.containerStyle}>
-          <View style={{ backgroundColor: '#fff', padding: 10 }}>
+          <View style={{ backgroundColor: '#f3f3f3', padding: 10 }}>
             <Card
               titleStyle={styles.titleTextStyle}
               containerStyle={{ padding: 10, margin: 5 }}
@@ -46,18 +46,18 @@ export default class AddDebtModal extends Component {
                 placeholder="Enter description..."
               />
               <Button
-                backgroundColor="#fff"
+                backgroundColor="#f3f3f3"
                 icon={{
                   name: 'plus-circle',
                   type: 'feather',
                   size: 20,
-                  color: '#fff'
+                  color: '#f3f3f3'
                 }}
                 title="ADD"
                 onPress={this.onSubmit}
                 fontFamily="Roboto"
                 fontSize={20}
-                color="#fff"
+                color="#f3f3f3"
                 buttonStyle={{
                   paddingLeft: 10,
                   paddingRight: 10,
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     color: Colors.orangeColor
   },
   formContainerStyle: {
-    backgroundColor: '#fff',
+    backgroundColor: '#f3f3f3',
     padding: 10
   },
   textHelperStyle: {

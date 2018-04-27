@@ -178,7 +178,7 @@ export default class UserList extends Component {
           leftComponent={{
             icon: 'user-plus',
             type: 'feather',
-            color: '#fff',
+            color: '#f3f3f3',
             size: 28,
             component: TouchableOpacity,
             containerStyle: styles.settingsButtonStyle,
@@ -190,7 +190,7 @@ export default class UserList extends Component {
           rightComponent={{
             icon: 'plus-circle',
             type: 'feather',
-            color: '#fff',
+            color: '#f3f3f3',
             size: 28,
             component: TouchableOpacity,
             containerStyle: styles.addTaskButtonStyle,
@@ -230,7 +230,7 @@ const styles = {
   },
   weekTextStyle: {
     fontFamily: 'Roboto',
-    color: '#fff',
+    color: '#f3f3f3',
     textAlign: 'center',
     alignSelf: 'center',
     fontSize: 16

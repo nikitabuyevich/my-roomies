@@ -33,6 +33,6 @@ const styles = {
     fontFamily: 'Roboto-Bold',
     fontSize: 16,
     textAlign: 'center',
-    color: '#fff'
+    color: '#f3f3f3'
   }
 };

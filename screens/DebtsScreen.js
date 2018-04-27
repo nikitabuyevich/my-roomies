@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
-import { Header, Card } from 'react-native-elements';
+import { Header, Card, Divider } from 'react-native-elements';
 import Timeline from 'react-native-timeline-listview';
 import Modal from 'react-native-modal';
 import DropdownAlert from 'react-native-dropdownalert';
@@ -31,7 +31,7 @@ export default class DebtsScreen extends Component {
   }
 
   componentDidMount = () => {
-    this.scrollToBottom();
+    this.scrollToBottom(false);
   };
 
   onEventPress(selectedData) {
@@ -42,9 +42,9 @@ export default class DebtsScreen extends Component {
     });
   }
 
-  scrollToBottom = () => {
+  scrollToBottom = animated => {
     setTimeout(() => {
-      this.scrollView.scrollToEnd({ animated: true });
+      this.scrollView.scrollToEnd({ animated });
     }, 250);
   };
 
@@ -111,24 +111,77 @@ export default class DebtsScreen extends Component {
     this.alertMessage('success', 'Added Debt', notifyMessage);
 
     this.forceUpdate();
-    this.scrollToBottom();
+    this.scrollToBottom(true);
   };
 
   renderDetail = rowData => {
+    if (rowData.owed && rowData.paid) {
+      return (
+        <Card
+          containerStyle={[
+            styles.rowCardContainerStyle,
+            { backgroundColor: Colors.lightGreenColor }
+          ]}
+        >
+          <Text style={styles.rowTitleTextStyle}>{rowData.title}</Text>
+          <Text style={styles.rowDescriptionTextStyle}>{rowData.description}</Text>
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <Divider />
+            <Text style={styles.rowAmountTextStyle}>${rowData.amount}</Text>
+            <Text style={styles.rowStatusTextStyle}>settled up</Text>
+            <Text style={styles.rowTimeTextStyle}>{rowData.time}</Text>
+          </View>
+        </Card>
+      );
+    }
+    if (rowData.owed && !rowData.paid) {
+      return (
+        <Card
+          containerStyle={[styles.rowCardContainerStyle, { backgroundColor: Colors.lightRedColor }]}
+        >
+          <Text style={styles.rowTitleTextStyle}>{rowData.title}</Text>
+          <Text style={styles.rowDescriptionTextStyle}>{rowData.description}</Text>
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <Divider />
+            <Text style={styles.rowAmountTextStyle}>${rowData.amount}</Text>
+            <Text style={styles.rowStatusTextStyle}>owes you</Text>
+            <Text style={styles.rowTimeTextStyle}>{rowData.time}</Text>
+          </View>
+        </Card>
+      );
+    }
+
     if (rowData.paid) {
       return (
-        <Card title={rowData.title} containerStyle={{ flex: 1, margin: 0 }}>
-          <View>
-            <Text>{rowData.description}</Text>
+        <Card
+          containerStyle={[
+            styles.rowCardContainerStyle,
+            { backgroundColor: Colors.lightGreenColor }
+          ]}
+        >
+          <Text style={styles.rowTitleTextStyle}>{rowData.title}</Text>
+          <Text style={styles.rowDescriptionTextStyle}>{rowData.description}</Text>
+          <View style={{ flexDirection: 'row', marginTop: 20 }}>
+            <Divider />
+            <Text style={styles.rowAmountTextStyle}>${rowData.amount}</Text>
+            <Text style={styles.rowStatusTextStyle}>settled up</Text>
+            <Text style={styles.rowTimeTextStyle}>{rowData.time}</Text>
           </View>
         </Card>
       );
     }
 
     return (
-      <Card title={rowData.title} containerStyle={{ flex: 1, margin: 0 }}>
-        <View>
-          <Text>{rowData.description}</Text>
+      <Card
+        containerStyle={[styles.rowCardContainerStyle, { backgroundColor: Colors.lightRedColor }]}
+      >
+        <Text style={styles.rowTitleTextStyle}>{rowData.title}</Text>
+        <Text style={styles.rowDescriptionTextStyle}>{rowData.description}</Text>
+        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+          <Divider />
+          <Text style={styles.rowAmountTextStyle}>${rowData.amount}</Text>
+          <Text style={styles.rowStatusTextStyle}>you owe</Text>
+          <Text style={styles.rowTimeTextStyle}>{rowData.time}</Text>
         </View>
       </Card>
     );
@@ -144,7 +197,7 @@ export default class DebtsScreen extends Component {
           rightComponent={{
             icon: 'plus',
             type: 'feather',
-            color: '#fff',
+            color: '#f3f3f3',
             size: 30,
             component: TouchableOpacity,
             onPress: () => {
@@ -241,8 +294,51 @@ const styles = StyleSheet.create({
     color: '#666'
   },
   headerTitleStyle: {
-    color: '#fff',
+    color: '#f3f3f3',
     fontSize: 20,
     fontFamily: 'Roboto'
+  },
+  rowTitleTextStyle: {
+    fontFamily: 'Roboto-Bold',
+    textAlign: 'center',
+    color: '#f3f3f3',
+    fontSize: 20,
+    marginBottom: 10
+  },
+  rowDescriptionTextStyle: {
+    fontFamily: 'Roboto',
+    color: '#f3f3f3',
+    fontSize: 17
+  },
+  rowTimeTextStyle: {
+    fontFamily: 'Roboto',
+    alignSelf: 'flex-end',
+    flex: 1,
+    color: '#f9f9f9',
+    fontSize: 14,
+    textAlign: 'right'
+  },
+  rowCardContainerStyle: {
+    flex: 1,
+    margin: 0,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingTop: 10,
+    paddingBottom: 8
+  },
+  rowStatusTextStyle: {
+    fontFamily: 'Roboto-Bold',
+    textAlign: 'center',
+    alignSelf: 'center',
+    flex: 1,
+    color: '#f6f6f6',
+    fontSize: 18
+  },
+  rowAmountTextStyle: {
+    fontFamily: 'Roboto-Bold',
+    alignSelf: 'flex-start',
+    flex: 1,
+    color: '#f3f3f3',
+    fontSize: 20
   }
 });

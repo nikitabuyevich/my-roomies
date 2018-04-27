@@ -28,10 +28,10 @@ export default class HomeScreen extends React.Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#fff'
+    backgroundColor: '#f3f3f3'
   },
   headerTitleStyle: {
-    color: '#fff',
+    color: '#f3f3f3',
     fontSize: 20,
     fontFamily: 'Roboto'
   }

@@ -46,7 +46,7 @@ export default class ChatScreen extends Component {
           centerComponent={{
             text: 'Roomies Chat',
             style: {
-              color: '#fff',
+              color: '#f3f3f3',
               fontSize: 20,
               fontFamily: 'Roboto'
             }

@@ -4,6 +4,7 @@ const redColor = '#FF3636';
 const barColor = '#F7F7F7';
 const orangeColor = '#F47448';
 const lightGreenColor = '#89DA9C';
+const lightRedColor = '#da8989';
 const greyColor = '#EBEDEE';
 const lightBlackColor = '#929292';
 const lightBlueColor = '#36cdff';
@@ -18,15 +19,16 @@ export default {
   lightGreenColor,
   greyColor,
   lightBlackColor,
+  lightRedColor,
   backgroundGreyColor,
   lightBlueColor,
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',
   errorBackground: 'red',
-  errorText: '#fff',
+  errorText: '#f3f3f3',
   warningBackground: '#EAEB5E',
   warningText: '#666804',
   noticeBackground: tintColor,
-  noticeText: '#fff'
+  noticeText: '#f3f3f3'
 };
