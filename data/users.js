@@ -1,3 +1,7 @@
+import jeffTurnerAvatarImage from '../assets/images/jeff_turner_avatar.png';
+import daveBensonAvatarImage from '../assets/images/dave_benson_avatar.png';
+import lucyWalkerAvatarImage from '../assets/images/lucy_walker_avatar.png';
+
 export default [
   {
     id: 0,
@@ -6,7 +10,7 @@ export default [
       last: 'Turner'
     },
     sex: 'M',
-    avatar: 'https://i.imgur.com/t1jJtKu.png',
+    avatar: jeffTurnerAvatarImage,
     chores: [
       {
         id: 0,
@@ -32,7 +36,7 @@ export default [
       last: 'Benson'
     },
     sex: 'M',
-    avatar: 'https://i.imgur.com/DWg0fS1.png',
+    avatar: daveBensonAvatarImage,
     chores: [
       {
         id: 0,
@@ -53,7 +57,7 @@ export default [
       last: 'Walker'
     },
     sex: 'F',
-    avatar: 'https://i.imgur.com/kq60ViM.png',
+    avatar: lucyWalkerAvatarImage,
     chores: [
       {
         id: 0,

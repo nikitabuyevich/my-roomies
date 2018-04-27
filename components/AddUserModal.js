@@ -109,7 +109,7 @@ export default class AddTaskModal extends Component {
 
 const styles = StyleSheet.create({
   containerStyle: {
-    flex: 0.75,
+    flex: 0.65,
     justifyContent: 'center'
   },
   titleTextStyle: {

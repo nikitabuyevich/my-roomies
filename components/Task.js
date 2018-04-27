@@ -13,7 +13,9 @@ export default class Task extends Component {
 
   componentDidMount = () => {
     const { completed } = this.props.chore;
-    this.setState({ toggle: completed });
+    this.setState({
+      toggle: completed
+    });
   };
 
   onSwipeStart = () => {
@@ -106,21 +108,29 @@ export default class Task extends Component {
 
     // activated
     if (toggle && !leftActionActivated) {
-      return { color: '#999' };
+      return {
+        color: '#999'
+      };
     }
 
     // not activated, activating
     if (!toggle && leftActionActivated) {
-      return { color: '#999' };
+      return {
+        color: '#999'
+      };
     }
 
     // activated, canceling
     if (toggle && leftActionActivated) {
-      return { color: '#555' };
+      return {
+        color: '#555'
+      };
     }
 
     // not activated
-    return { color: '#555' };
+    return {
+      color: '#555'
+    };
   };
 
   renderRightButtons = (user, currentUserId, text, completed) => {
@@ -153,7 +163,7 @@ export default class Task extends Component {
     const { container, listItem, labelTextStyle, taskTextViewContainerStyle } = styles;
 
     return (
-      <ScrollView scrollEnabled={isScrollable} style={container}>
+      <ScrollView scrollEnabled={isScrollable} style={[container, this.props.bottomBorder]}>
         <Swipeable
           onRef={ref => (this.swipeable = ref)}
           onSwipeStart={this.onSwipeStart}
@@ -194,9 +204,7 @@ export default class Task extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: Colors.greyColor
+    flex: 1
   },
   labelTextStyle: {
     fontSize: 18,

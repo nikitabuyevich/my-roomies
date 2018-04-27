@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
 import Colors from '../constants/Colors';
 
 export default class DebtsModal extends Component {
@@ -39,10 +39,19 @@ export default class DebtsModal extends Component {
 
   render() {
     return (
-      <View style={styles.containerStyle}>
-        <View style={styles.formContainerStyle}>
-          {this.renderButton()}
-          <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+      <View style={{ flex: 1 }}>
+        <View style={styles.containerStyle}>
+          <View style={{ backgroundColor: '#fff', padding: 10 }}>
+            <Card
+              titleStyle={styles.titleTextStyle}
+              containerStyle={{ padding: 10, margin: 5 }}
+              title="Update Debt"
+              style={styles.formContainerStyle}
+            >
+              {this.renderButton()}
+              <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+            </Card>
+          </View>
         </View>
       </View>
     );
@@ -53,6 +62,12 @@ const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
     justifyContent: 'center'
+  },
+  titleTextStyle: {
+    fontSize: 20,
+    fontFamily: 'Roboto',
+    textAlign: 'center',
+    color: Colors.orangeColor
   },
   formContainerStyle: {
     backgroundColor: '#fff',

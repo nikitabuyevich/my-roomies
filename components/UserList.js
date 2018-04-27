@@ -9,6 +9,14 @@ import AddTaskModal from '../components/AddTaskModal';
 import AddUserModel from '../components/AddUserModal';
 import { getWeekOf } from '../helpers';
 
+import maleAvatar1Image from '../assets/images/avatars/male/1.png';
+import maleAvatar2Image from '../assets/images/avatars/male/2.png';
+import maleAvatar3Image from '../assets/images/avatars/male/3.png';
+
+import femaleAvatar1Image from '../assets/images/avatars/female/1.png';
+import femaleAvatar2Image from '../assets/images/avatars/female/2.png';
+import femaleAvatar3Image from '../assets/images/avatars/female/3.png';
+
 const currentUserId = 0;
 
 export default class UserList extends Component {
@@ -95,16 +103,8 @@ export default class UserList extends Component {
 
   randomlyPickAvatar = sex => {
     const avatars = {
-      males: [
-        'https://i.imgur.com/3FDGnAk.png',
-        'https://i.imgur.com/BaFiCQa.png',
-        'https://i.imgur.com/hLaBSLw.png'
-      ],
-      females: [
-        'https://i.imgur.com/6umrMwe.png',
-        'https://i.imgur.com/lEYRGzf.png',
-        'https://i.imgur.com/liXLTNP.png'
-      ]
+      males: [maleAvatar1Image, maleAvatar2Image, maleAvatar3Image],
+      females: [femaleAvatar1Image, femaleAvatar2Image, femaleAvatar3Image]
     };
 
     if (sex === 'M') {

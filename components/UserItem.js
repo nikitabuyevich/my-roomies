@@ -17,7 +17,7 @@ const UserItem = ({
     <Card containerStyle={{ flex: 1, paddingLeft: 0 }}>
       <View style={containerStyle}>
         <View style={avatarStyle}>
-          <Image style={avatarImageStyle} source={{ uri: avatar }} />
+          <Image style={avatarImageStyle} source={avatar} />
           <Text style={avatarTextStyle}>{name.first}</Text>
           <Text style={avatarTextStyle}>{name.last}</Text>
         </View>
