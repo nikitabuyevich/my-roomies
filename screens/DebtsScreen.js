@@ -10,6 +10,7 @@ import AddDebtModal from '../components/AddDebtModal';
 import Colors from '../constants/Colors';
 import checkImg from '../assets/images/check.png';
 import timesImg from '../assets/images/times.png';
+import { getDate } from '../helpers';
 
 export default class DebtsScreen extends Component {
   static navigationOptions = {
@@ -36,30 +37,6 @@ export default class DebtsScreen extends Component {
       debtsModalIsVisible: true
     });
   }
-
-  getDate = () => {
-    const date = new Date();
-    const monthNames = [
-      'JAN',
-      'FEB',
-      'MAR',
-      'APR',
-      'May',
-      'JUN',
-      'JUL',
-      'AUG',
-      'SEPT',
-      'OCT',
-      'NOV',
-      'DEC'
-    ];
-
-    const day = date.getDate();
-    const monthIndex = date.getMonth();
-    const year = date.getFullYear();
-
-    return `${monthNames[monthIndex]} ${day}, ${year}`;
-  };
 
   alertMessage = (type, title, message) => {
     this.dropdownAlert.alertWithType(type, title, message);
@@ -111,7 +88,7 @@ export default class DebtsScreen extends Component {
 
     data.push({
       id: data.length,
-      time: this.getDate(),
+      time: getDate(),
       title,
       description,
       lineColor: Colors.redColor,

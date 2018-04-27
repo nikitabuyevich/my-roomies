@@ -7,6 +7,7 @@ import dummyUsers from '../data/users';
 import Colors from '../constants/Colors';
 import AddTaskModal from '../components/AddTaskModal';
 import AddUserModel from '../components/AddUserModal';
+import { getWeekOf } from '../helpers';
 
 const currentUserId = 0;
 
@@ -178,7 +179,7 @@ export default class UserList extends Component {
               this.setState({ addUserModalIsVisible: true });
             }
           }}
-          centerComponent={{ text: 'Week of APR 9 2018', style: styles.weekTextStyle }}
+          centerComponent={{ text: `Week of ${getWeekOf()}`, style: styles.weekTextStyle }}
           rightComponent={{
             icon: 'plus-circle',
             type: 'feather',
