@@ -204,7 +204,7 @@ export default class DebtsScreen extends Component {
               this.setState({ addDebtModalIsVisible: true });
             }
           }}
-          outerContainerStyles={{ backgroundColor: Colors.orangeColor }}
+          outerContainerStyles={{ backgroundColor: Colors.orangeColor, borderBottomWidth: 0 }}
         />
         <Modal
           isVisible={this.state.debtsModalIsVisible}
@@ -262,11 +262,11 @@ export default class DebtsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: Colors.lightGreyColor
   },
   timelineContainer: {
     flex: 1,
-    paddingLeft: 20,
+    paddingLeft: 5,
     paddingRight: 20
   },
   list: {

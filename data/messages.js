@@ -1,7 +1,7 @@
 export default [
   {
     _id: 1,
-    text: '✅ Jeff Turner paid his $8.99 debt owed to Dave Benson for the eggs',
+    text: 'Jeff Turner paid his $8.99 debt owed to Dave Benson for the eggs',
     createdAt: new Date('April 6, 2018 15:09:00'),
     system: true
   },

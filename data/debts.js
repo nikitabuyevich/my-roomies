@@ -12,7 +12,7 @@ export default [
     lineWidth: 2,
     icon: checkImg,
     amount: 600.0,
-    owed: false,
+    owed: true,
     paid: true
   },
   {
@@ -25,7 +25,7 @@ export default [
     icon: checkImg,
     owed: false,
     amount: 8.99,
-    paid: true
+    paid: false
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ export default [
     lineWidth: 2,
     icon: timesImg,
     amount: 18.0,
-    owed: false,
+    owed: true,
     paid: false
   },
   {

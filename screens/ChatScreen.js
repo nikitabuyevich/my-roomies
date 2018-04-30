@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Header } from 'react-native-elements';
-import { GiftedChat, Bubble } from 'react-native-gifted-chat';
+import { Header, Icon } from 'react-native-elements';
+import { GiftedChat, Bubble, SystemMessage } from 'react-native-gifted-chat';
 import hardCodedMessages from '../data/messages';
 import Colors from '../constants/Colors';
 
 const styles = StyleSheet.create({
-  container: { flex: 1 }
+  container: { flex: 1, backgroundColor: '#fff' }
 });
 
 export default class ChatScreen extends Component {
@@ -60,6 +60,16 @@ export default class ChatScreen extends Component {
             _id: 1
           }}
           parsePatterns={this.parsePatterns}
+          renderSystemMessage={props => (
+            <SystemMessage
+              {...props}
+              textStyle={{
+                fontFamily: 'Roboto-Bold',
+                color: Colors.lightGreenColor,
+                fontSize: 12
+              }}
+            />
+          )}
           renderBubble={props => (
             <Bubble
               {...props}

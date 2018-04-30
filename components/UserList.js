@@ -206,7 +206,7 @@ export default class UserList extends Component {
           ref={ref => (this.flatlist = ref)}
           data={this.state.users}
           extraData={this.state.refreshList}
-          style={{ marginBottom: 15 }}
+          style={{ marginTop: 15 }}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
             <UserItem
@@ -246,6 +246,7 @@ const styles = {
   userListHeaderContainerStyle: {
     margin: 0,
     padding: 0,
+    borderBottomWidth: 0,
     height: 50
   }
 };

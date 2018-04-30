@@ -9,6 +9,7 @@ const greyColor = '#EBEDEE';
 const lightBlackColor = '#929292';
 const lightBlueColor = '#36cdff';
 const backgroundGreyColor = '#D6D6D6';
+const lightGreyColor = '#F6F6F6';
 
 export default {
   tintColor,
@@ -22,6 +23,7 @@ export default {
   lightRedColor,
   backgroundGreyColor,
   lightBlueColor,
+  lightGreyColor,
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',

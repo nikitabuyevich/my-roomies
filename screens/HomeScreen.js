@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import DropdownAlert from 'react-native-dropdownalert';
 import HomeNavBar from '../components/HomeNavBar';
 import UserList from '../components/UserList';
+import Colors from '../constants/Colors';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -28,7 +29,7 @@ export default class HomeScreen extends React.Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#f3f3f3'
+    backgroundColor: Colors.lightGreyColor
   },
   headerTitleStyle: {
     color: '#f3f3f3',

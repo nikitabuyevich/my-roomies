@@ -11,11 +11,17 @@ const UserItem = ({
   currentUserId
 }) => {
   const { name, avatar } = user;
-  const { containerStyle, avatarStyle, avatarImageStyle, avatarTextStyle } = styles;
+  const {
+    containerStyle,
+    viewContainerStyle,
+    avatarStyle,
+    avatarImageStyle,
+    avatarTextStyle
+  } = styles;
 
   return (
-    <Card containerStyle={{ flex: 1, paddingLeft: 0 }}>
-      <View style={containerStyle}>
+    <Card containerStyle={containerStyle}>
+      <View style={viewContainerStyle}>
         <View style={avatarStyle}>
           <Image style={avatarImageStyle} source={avatar} />
           <Text style={avatarTextStyle}>{name.first}</Text>
@@ -35,6 +41,12 @@ const UserItem = ({
 
 const styles = {
   containerStyle: {
+    flex: 1,
+    paddingLeft: 0,
+    marginTop: 0,
+    marginBottom: 15
+  },
+  viewContainerStyle: {
     flex: 1,
     flexDirection: 'row'
   },
