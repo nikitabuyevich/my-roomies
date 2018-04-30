@@ -20,9 +20,9 @@ export default [
     time: 'APR 6, 2018',
     title: 'Eggs from Dave',
     description: 'Grocery store trip',
-    lineColor: Colors.greenColor,
+    lineColor: Colors.redColor,
     lineWidth: 2,
-    icon: checkImg,
+    icon: timesImg,
     owed: false,
     amount: 8.99,
     paid: false
