@@ -39,19 +39,17 @@ export default class DebtsModal extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.containerStyle}>
-          <View style={{ backgroundColor: '#f3f3f3', padding: 10 }}>
-            <Card
-              titleStyle={styles.titleTextStyle}
-              containerStyle={{ padding: 10, margin: 5 }}
-              title="Update Debt"
-              style={styles.formContainerStyle}
-            >
-              {this.renderButton()}
-              <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
-            </Card>
-          </View>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View style={{ backgroundColor: '#f3f3f3', padding: 10 }}>
+          <Card
+            titleStyle={styles.titleTextStyle}
+            containerStyle={{ padding: 10, margin: 5 }}
+            title="Update Debt"
+            style={styles.formContainerStyle}
+          >
+            {this.renderButton()}
+            <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
+          </Card>
         </View>
       </View>
     );
@@ -59,10 +57,6 @@ export default class DebtsModal extends Component {
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-    justifyContent: 'center'
-  },
   titleTextStyle: {
     fontSize: 20,
     fontFamily: 'Roboto',

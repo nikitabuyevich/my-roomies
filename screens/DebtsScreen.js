@@ -313,8 +313,9 @@ const styles = StyleSheet.create({
   },
   timelineContainer: {
     flex: 1,
-    paddingLeft: 5,
-    paddingRight: 20
+    marginLeft: 5,
+    marginRight: 0,
+    padding: 0
   },
   list: {
     flex: 1,
@@ -371,7 +372,8 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     paddingTop: 10,
-    paddingBottom: 8
+    paddingBottom: 8,
+    marginRight: 20
   },
   rowStatusTextStyle: {
     fontFamily: 'Roboto-Bold',

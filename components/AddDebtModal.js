@@ -47,85 +47,80 @@ export default class AddDebtModal extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.containerStyle}>
-          <ScrollView style={{}}>
-            <View style={styles.scrollViewContainerStyle}>
-              <Card
-                titleStyle={styles.titleTextStyle}
-                containerStyle={{ padding: 10, margin: 5 }}
-                title="Add a New Debt"
-                style={styles.formContainerStyle}
-              >
-                <FormLabel>Title</FormLabel>
-                <FormInput
-                  autoFocus
-                  onSubmitEditing={this.onSubmit}
-                  inputStyle={{ width: '100%' }}
-                  onChangeText={titleText => this.setState({ titleText })}
-                  value={this.state.titleText}
-                  placeholder="Enter title..."
-                />
-                <FormLabel>Description</FormLabel>
-                <FormInput
-                  inputStyle={{ width: '100%' }}
-                  onChangeText={descriptionText => this.setState({ descriptionText })}
-                  value={this.state.descriptionText}
-                  onSubmitEditing={this.onSubmit}
-                  placeholder="Enter description..."
-                />
-                <FormLabel>Amount</FormLabel>
-                <FormInput
-                  inputStyle={{ width: '100%' }}
-                  onChangeText={amountText => this.setState({ amountText })}
-                  value={this.state.amountText}
-                  keyboardType="numeric"
-                  onSubmitEditing={this.onSubmit}
-                  placeholder="Enter amount..."
-                />
-                <FormLabel>Owe</FormLabel>
-                <RadioForm
-                  radio_props={oweProps}
-                  initial={0}
-                  formHorizontal
-                  labelStyle={styles.radioButtonLabelStyle}
-                  buttonColor={Colors.orangeColor}
-                  selectedButtonColor={Colors.orangeColor}
-                  style={{ marginTop: 6, marginLeft: 10 }}
-                  labelHorizontal={false}
-                  onPress={oweProp => {
-                    this.setState({ oweProp });
-                  }}
-                />
-                <FormLabel>Paid</FormLabel>
-                <RadioForm
-                  radio_props={paidProps}
-                  initial={0}
-                  formHorizontal
-                  labelStyle={styles.radioButtonLabelStyle}
-                  buttonColor={Colors.orangeColor}
-                  selectedButtonColor={Colors.orangeColor}
-                  style={{ marginTop: 6, marginLeft: 10 }}
-                  labelHorizontal={false}
-                  onPress={paidProp => {
-                    this.setState({ paidProp });
-                  }}
-                />
-                <AddModalButton onPress={this.onSubmit} />
-                <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
-              </Card>
-            </View>
-          </ScrollView>
-        </View>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{}}>
+          <View style={styles.scrollViewContainerStyle}>
+            <Card
+              titleStyle={styles.titleTextStyle}
+              containerStyle={{ padding: 10, margin: 5 }}
+              title="Add a New Debt"
+              style={styles.formContainerStyle}
+            >
+              <FormLabel>Title</FormLabel>
+              <FormInput
+                autoFocus
+                onSubmitEditing={this.onSubmit}
+                inputStyle={{ width: '100%' }}
+                onChangeText={titleText => this.setState({ titleText })}
+                value={this.state.titleText}
+                placeholder="Enter title..."
+              />
+              <FormLabel>Description</FormLabel>
+              <FormInput
+                inputStyle={{ width: '100%' }}
+                onChangeText={descriptionText => this.setState({ descriptionText })}
+                value={this.state.descriptionText}
+                onSubmitEditing={this.onSubmit}
+                placeholder="Enter description..."
+              />
+              <FormLabel>Amount</FormLabel>
+              <FormInput
+                inputStyle={{ width: '100%' }}
+                onChangeText={amountText => this.setState({ amountText })}
+                value={this.state.amountText}
+                keyboardType="numeric"
+                onSubmitEditing={this.onSubmit}
+                placeholder="Enter amount..."
+              />
+              <FormLabel>Owe</FormLabel>
+              <RadioForm
+                radio_props={oweProps}
+                initial={0}
+                formHorizontal
+                labelStyle={styles.radioButtonLabelStyle}
+                buttonColor={Colors.orangeColor}
+                selectedButtonColor={Colors.orangeColor}
+                style={{ marginTop: 6, marginLeft: 10 }}
+                labelHorizontal={false}
+                onPress={oweProp => {
+                  this.setState({ oweProp });
+                }}
+              />
+              <FormLabel>Paid</FormLabel>
+              <RadioForm
+                radio_props={paidProps}
+                initial={0}
+                formHorizontal
+                labelStyle={styles.radioButtonLabelStyle}
+                buttonColor={Colors.orangeColor}
+                selectedButtonColor={Colors.orangeColor}
+                style={{ marginTop: 6, marginLeft: 10 }}
+                labelHorizontal={false}
+                onPress={paidProp => {
+                  this.setState({ paidProp });
+                }}
+              />
+              <AddModalButton onPress={this.onSubmit} />
+              <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
+            </Card>
+          </View>
+        </ScrollView>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  containerStyle: {
-    justifyContent: 'center'
-  },
   scrollViewContainerStyle: {
     backgroundColor: '#f3f3f3',
     marginTop: 40,
