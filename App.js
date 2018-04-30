@@ -7,6 +7,7 @@ import MainTabNavigator from './navigation/MainTabNavigator';
 import RobotoFont from './assets/fonts/Roboto-Regular.ttf';
 import RobotoBoldFont from './assets/fonts/Roboto-Bold.ttf';
 
+import rankStandingsImg from './assets/images/rank_standings.png';
 import jeffTurnerAvatarImage from './assets/images/jeff_turner_avatar.png';
 import daveBensonAvatarImage from './assets/images/dave_benson_avatar.png';
 import lucyWalkerAvatarImage from './assets/images/lucy_walker_avatar.png';
@@ -27,6 +28,7 @@ export default class App extends React.Component {
   loadResourcesAsync = async () =>
     Promise.all([
       Asset.loadAsync([
+        rankStandingsImg,
         jeffTurnerAvatarImage,
         daveBensonAvatarImage,
         lucyWalkerAvatarImage,
@@ -75,6 +77,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f3f3f3'
+    backgroundColor: '#fff'
   }
 });

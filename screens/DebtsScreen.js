@@ -193,7 +193,7 @@ export default class DebtsScreen extends Component {
         <DropdownAlert closeInterval={5000} ref={c => (this.dropdownAlert = c)} zIndex={100} />
         <Header
           statusBarProps={{ barStyle: 'light-content' }}
-          centerComponent={{ text: 'Debts Timeline', style: styles.headerTitleStyle }}
+          centerComponent={{ text: '💸 Debts Timeline', style: styles.headerTitleStyle }}
           rightComponent={{
             icon: 'plus',
             type: 'feather',

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Header, Icon } from 'react-native-elements';
+import { Header } from 'react-native-elements';
 import { GiftedChat, Bubble, SystemMessage } from 'react-native-gifted-chat';
 import hardCodedMessages from '../data/messages';
 import Colors from '../constants/Colors';
@@ -44,7 +44,7 @@ export default class ChatScreen extends Component {
         <Header
           statusBarProps={{ barStyle: 'light-content' }}
           centerComponent={{
-            text: 'Roomies Chat',
+            text: '💬 Roomies Chat',
             style: {
               color: '#f3f3f3',
               fontSize: 20,
