@@ -154,7 +154,8 @@ export default class UserList extends Component {
               addTaskModalIsVisible: false
             })
           }
-          swipeDirection="up"
+          animationIn="slideInDown"
+          swipeDirection="right"
           swipeThreshold={50}
         >
           <AddTaskModal
@@ -169,7 +170,8 @@ export default class UserList extends Component {
               addUserModalIsVisible: false
             })
           }
-          swipeDirection="up"
+          animationIn="slideInDown"
+          swipeDirection="right"
           swipeThreshold={50}
         >
           <AddUserModel addUser={this.addUser} hideAddUserModal={this.hideAddUserModal} />

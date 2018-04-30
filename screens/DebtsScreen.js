@@ -93,19 +93,63 @@ export default class DebtsScreen extends Component {
     this.forceUpdate();
   };
 
-  addDebt = (title, description) => {
+  addDebt = (title, description, amountText, owe, paid) => {
     const { data } = this.state;
+    const amount = Number(amountText);
 
-    data.push({
-      id: data.length,
-      time: getDate(),
-      title,
-      description,
-      lineColor: Colors.redColor,
-      lineWidth: 2,
-      icon: timesImg,
-      paid: false
-    });
+    if (!owe && paid) {
+      data.push({
+        id: data.length,
+        time: getDate(),
+        title,
+        description,
+        lineColor: Colors.greenColor,
+        lineWidth: 2,
+        icon: checkImg,
+        amount,
+        owed: !owe,
+        paid
+      });
+    } else if (!owe && !paid) {
+      data.push({
+        id: data.length,
+        time: getDate(),
+        title,
+        description,
+        lineColor: Colors.redColor,
+        lineWidth: 2,
+        icon: timesImg,
+        owed: !owe,
+        amount,
+        paid
+      });
+    } else if (paid) {
+      data.push({
+        id: data.length,
+        time: getDate(),
+        title,
+        description,
+        lineColor: Colors.greenColor,
+        lineWidth: 2,
+        icon: checkImg,
+        owed: !owe,
+        amount,
+        paid
+      });
+    } else {
+      data.push({
+        id: data.length,
+        time: getDate(),
+        title,
+        description,
+        lineColor: Colors.redColor,
+        lineWidth: 2,
+        icon: timesImg,
+        owed: !owe,
+        amount,
+        paid
+      });
+    }
 
     const notifyMessage = `The ${title} for ${description} has been added!`;
     this.alertMessage('success', 'Added Debt', notifyMessage);
@@ -213,7 +257,8 @@ export default class DebtsScreen extends Component {
               debtsModalIsVisible: false
             })
           }
-          swipeDirection="up"
+          animationIn="slideInDown"
+          swipeDirection="right"
           swipeThreshold={50}
         >
           <DebtsModal
@@ -224,12 +269,14 @@ export default class DebtsScreen extends Component {
         </Modal>
         <Modal
           isVisible={this.state.addDebtModalIsVisible}
+          avoidKeyboard
           onSwipe={() =>
             this.setState({
               addDebtModalIsVisible: false
             })
           }
-          swipeDirection="up"
+          animationIn="slideInDown"
+          swipeDirection="right"
           swipeThreshold={50}
         >
           <AddDebtModal addDebt={this.addDebt} hideAddDebtModal={this.hideAddDebtModal} />

@@ -49,7 +49,7 @@ export default class DebtsModal extends Component {
               style={styles.formContainerStyle}
             >
               {this.renderButton()}
-              <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+              <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
             </Card>
           </View>
         </View>

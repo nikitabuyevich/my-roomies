@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { FormInput, FormLabel, Button, Card } from 'react-native-elements';
+import { View, StyleSheet, Text } from 'react-native';
+import { FormInput, FormLabel, Card } from 'react-native-elements';
 import RadioForm from 'react-native-simple-radio-button';
+import AddModalButton from '../components/AddModalButton';
 import Colors from '../constants/Colors';
 
 const sexProps = [
@@ -71,34 +72,8 @@ export default class AddTaskModal extends Component {
                   this.setState({ sexProp });
                 }}
               />
-              <Button
-                backgroundColor="#f3f3f3"
-                icon={{
-                  name: 'plus-circle',
-                  type: 'feather',
-                  size: 20,
-                  color: '#f3f3f3'
-                }}
-                title="ADD"
-                onPress={this.onSubmit}
-                fontFamily="Roboto"
-                fontSize={20}
-                color="#f3f3f3"
-                buttonStyle={{
-                  paddingLeft: 10,
-                  paddingRight: 10,
-                  paddingTop: 6,
-                  paddingBottom: 6,
-                  marginTop: 10,
-                  marginLeft: 5,
-                  borderWidth: 1,
-                  borderColor: Colors.orangeColor,
-                  backgroundColor: Colors.orangeColor,
-                  borderRadius: 6
-                }}
-                component={TouchableOpacity}
-              />
-              <Text style={styles.textHelperStyle}>Swipe up to dismiss</Text>
+              <AddModalButton onPress={this.onSubmit} />
+              <Text style={styles.textHelperStyle}>Swipe right to dismiss</Text>
             </Card>
           </View>
         </View>
