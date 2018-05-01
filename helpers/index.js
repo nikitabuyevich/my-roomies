@@ -71,7 +71,7 @@ export const getWeekOf = () => {
   if (date.getDay() === 0) {
     prevMonday = new Date().setDate(date.getDate() - 7);
   } else {
-    prevMonday = new Date().setDate(date.getDate() - day);
+    prevMonday = new Date().setDate(date.getDate() - (day - 1));
   }
 
   return getDateInFull(prevMonday);
