@@ -8,7 +8,8 @@ const UserItem = ({
   enableUserListScroll,
   disableUserListScroll,
   alertMessage,
-  currentUserId
+  currentUserId,
+  marginTop
 }) => {
   const { name, avatar } = user;
   const {
@@ -20,7 +21,7 @@ const UserItem = ({
   } = styles;
 
   return (
-    <Card containerStyle={containerStyle}>
+    <Card containerStyle={[containerStyle, { marginTop: marginTop ? 15 : 0 }]}>
       <View style={viewContainerStyle}>
         <View style={avatarStyle}>
           <Image style={avatarImageStyle} source={avatar} />
@@ -43,7 +44,6 @@ const styles = {
   containerStyle: {
     flex: 1,
     paddingLeft: 0,
-    marginTop: 0,
     marginBottom: 15
   },
   viewContainerStyle: {

@@ -208,18 +208,34 @@ export default class UserList extends Component {
           ref={ref => (this.flatlist = ref)}
           data={this.state.users}
           extraData={this.state.refreshList}
-          style={{ marginTop: 15 }}
           keyExtractor={item => item.id.toString()}
-          renderItem={({ item }) => (
-            <UserItem
-              key={item.id}
-              currentUserId={currentUserId}
-              enableUserListScroll={this.enableUserListScroll}
-              disableUserListScroll={this.disableUserListScroll}
-              user={item}
-              alertMessage={this.props.alertMessage}
-            />
-          )}
+          renderItem={({ item, index }) => {
+            // marign top
+            if (index === 0) {
+              return (
+                <UserItem
+                  key={item.id}
+                  currentUserId={currentUserId}
+                  enableUserListScroll={this.enableUserListScroll}
+                  disableUserListScroll={this.disableUserListScroll}
+                  marginTop
+                  user={item}
+                  alertMessage={this.props.alertMessage}
+                />
+              );
+            }
+
+            return (
+              <UserItem
+                key={item.id}
+                currentUserId={currentUserId}
+                enableUserListScroll={this.enableUserListScroll}
+                disableUserListScroll={this.disableUserListScroll}
+                user={item}
+                alertMessage={this.props.alertMessage}
+              />
+            );
+          }}
         />
       </View>
     );
